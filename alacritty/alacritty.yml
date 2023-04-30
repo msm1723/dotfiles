@@ -1,0 +1,181 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux"
+
+env:
+  TERM: alacritty
+
+window:
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 0
+    y: 0
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  #
+  # Values for `decorations` (macOS only):
+  #     - transparent: Title bar, transparent background and title bar buttons
+  #     - buttonless: Title bar, transparent background, but no title bar buttons
+  decorations: full
+
+  # Startup Mode (changes require restart)
+  #
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  #
+  # Values for `startup_mode` (macOS only):
+  #   - SimpleFullscreen
+  startup_mode: Windowed
+
+  # Hide window title bar
+  decorations: Full
+  opacity: 1.0
+  dimensions:
+    columns: 140
+    lines: 25
+
+font:
+  # Normal font face - Also used to draw glyphs on tmux & VIM
+  # NOTE: You may use any font you'd like but make sure the normal fonts
+  # support ligatures/glyphs. That's used by tmux & VIM to provide a better
+  # UI for powerline & tmux bottom bar.
+  # Font options
+  #   - (macOS) Menlo
+  #   - (Linux) monospace
+  #   - (Windows) Consolas
+  normal:
+    # Font name
+    family: Monoid
+    # Font face
+    style: Retina
+
+  # Bold font face
+  bold:
+    family: Monoid
+    style: Bold
+
+  # Italic font face
+  italic:
+    family: Monoid
+    style: Italic
+
+  # Bold italic font face
+  # Note: Since i don't have a font italic version of this font, I just specified
+  # italic & it just works. You may specifiy the bold italic version if it exists
+  # for your font
+  bold_italic:
+    family: Monoid
+    style: Italic
+
+  # Font size
+  size: 12.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing
+  # I've given in 14 spacing which fits really well with my fonts, you may change it
+  # to your convenience but make sure to adjust 'glyph_offset' appropriately post that
+  offset:
+   x: 0
+   y: 14
+
+  # Note: This requires RESTART
+  # By default when you change the offset above you'll see an issue, where the texts are bottom
+  # aligned with the 
+  # cursor, this is to make sure they center align.
+  # This offset should usually be 1/2 of the above offset-y being set.
+  glyph_offset:
+   x: 0
+   # Keeping this as half of offset to vertically align the text in cursor
+   y: 7
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: false
+
+cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style:
+    shape: Beam
+    blinking: On
+  blink_interval: 75
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: true
+
+# Setup some amazing custom key bindings here - Best thing is you can setup key bindings
+# using Mac's 'command' to control your tmux.
+# A great reference: https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
+key_bindings:
+  # Use command + [ - to go to previous tmux window
+  - { key: LBracket, mods: Command, chars: "\x5c\x70" }
+  # Use command + ] - to go to previous tmux window
+  - { key: RBracket, mods: Command, chars: "\x5c\x6e" }
+  # ctrl-^ doesn't work in some terminals like alacritty
+  - { key: Key6, mods: Control, chars: "\x1e" }
+
+# Colors (Gruvbox Material Dark Medium)
+colors:
+  primary:
+    background: '0x282828'
+    foreground: '0xdfbf8e'
+
+  normal:
+    black:   '0x665c54'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe78a4e'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
+
+  bright:
+    black:   '0x928374'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe3a84e'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
+
+# Live config reload (changes require restart)
+live_config_reload: true
