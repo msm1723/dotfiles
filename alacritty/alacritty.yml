@@ -45,7 +45,6 @@ window:
   startup_mode: Windowed
 
   # Hide window title bar
-  decorations: Full
   opacity: 1.0
   dimensions:
     columns: 140
@@ -129,7 +128,7 @@ cursor:
   style:
     shape: Beam
     blinking: On
-  blink_interval: 75
+  blink_interval: 30
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
@@ -145,11 +144,9 @@ selection:
 # A great reference: https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
 key_bindings:
   # Use command + [ - to go to previous tmux window
-  - { key: LBracket, mods: Command, chars: "\x5c\x70" }
+  - { key: LBracket, mods: Command, chars: "\x01\x70" }
   # Use command + ] - to go to previous tmux window
-  - { key: RBracket, mods: Command, chars: "\x5c\x6e" }
-  # ctrl-^ doesn't work in some terminals like alacritty
-  - { key: Key6, mods: Control, chars: "\x1e" }
+  - { key: RBracket, mods: Command, chars: "\x01\x6e" }
 
 # Colors (Gruvbox Material Dark Medium)
 colors:
