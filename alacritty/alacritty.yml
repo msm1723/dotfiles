@@ -163,7 +163,7 @@ key_bindings:
  - { key: H, mods: Option, chars: "\x01\x22" } # new pane (horizontal)
  - { key: W, mods: Option, chars: "\x01\x77" } # close pane
 
- - { key: B, mods: Option, chars: "\x01\x62" } # make window from pane
+ - { key: B, mods: Option, chars: "\x01\x62" } # synchronize panes input
 
    # move to window 1, 2, 3 with command+n
  - { key: Key1, mods: Command, chars: "\x01\x31" }
