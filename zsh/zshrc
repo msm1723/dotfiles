@@ -7,9 +7,6 @@ export ZSH=$HOME/.oh-my-zsh
 ## Theme
 ZSH_THEME="nicoulaj"
 
-## Prompt
-RPROMPT="%D{%L:%M:%S}"
-
 ## Disable auto-setting terminal title for tmux pane
 DISABLE_AUTO_TITLE="true"
 
