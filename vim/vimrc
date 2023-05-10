@@ -39,11 +39,9 @@ else
 
   "" Aappearance
   set termguicolors
-  syntax enable
-  set background=dark
   colorscheme gruvbox-material
   highlight Comment cterm=italic gui=italic
-  let g:lightline = {'colorscheme': 'gruvbox_material'}
+  "let g:lightline = {'colorscheme': 'gruvbox_material'}
   
   "" Shougo/deoplete.nvim autocompletion
   let g:deoplete#enable_at_startup = 1

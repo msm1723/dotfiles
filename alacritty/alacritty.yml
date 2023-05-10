@@ -8,7 +8,7 @@ shell:
     - "tmux attach -t base || tmux new -s base"
 
 env:
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window padding (changes require restart)
