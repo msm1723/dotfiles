@@ -108,3 +108,9 @@ alias rsynk="rsync -avzhP"
 
 ## Reattach to session or create new
 alias tt="tmux attach -t base || tmux new -s base"
+
+## Homebreow
+alias br="brew"
+alias bru="brew upgrade"
+alias brd="brew doctor"
+alias brc="brew cleanup"

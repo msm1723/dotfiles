@@ -132,8 +132,10 @@ cursor:
   #   - | Beam
   style:
     shape: Beam
-    blinking: On
-  blink_interval: 30
+    blinking: Always
+  vi_mode_style:
+    shape: Beam
+    blinking: Always
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true

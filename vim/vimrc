@@ -57,6 +57,13 @@ else
   let g:GPGExecutable = "PINENTRY_USER_DATA='' gpg --trust-model always"
 endif
 
+""" Fix cursor back to Beam from Block when exit
+"""
+augroup RestoreCursorShapeOnExit
+    autocmd!
+    autocmd VimLeave * set guicursor=a:ver20
+augroup END
+
 """" Init all common (packet agnostic) nvim settings
 """"
 set splitbelow " horizontal split below current.
@@ -88,7 +95,6 @@ nnoremap H 0 " begingin of line
 nnoremap L $ " end of line
 nnoremap J G " begingin of file
 nnoremap K gg " ending of file
-
 
 "" Mappings tmux navigator
 let g:tmux_navigator_no_mappings = 1
