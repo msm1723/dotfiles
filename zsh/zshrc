@@ -32,7 +32,7 @@ antigen bundle agkozak/zsh-z
 antigen bundle djui/alias-tips
 
 # Set theme
-antigen theme nicoulaj
+antigen theme jispwoso
 
 # Apply changes
 antigen apply
@@ -115,4 +115,11 @@ alias bru="brew upgrade"
 alias brd="brew doctor"
 alias brc="brew cleanup"
 
-alias pi1="ssh siarhei@192.168.100.6"
+## Docker
+alias d="docker"
+alias drmi="docker image prune"
+alias drm="docker ps -aq | xargs docker stop | xargs docker rm"
+
+## GIT
+alias gconf="git config --list --show-origin"
+

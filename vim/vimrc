@@ -121,7 +121,7 @@ map <SPACE> <leader>
 
 set notimeout " no timeout for leader (wait forever for mapped key after pressing leader)
 set showcmd " show <leader> pressed
-map <leader>pj :%!python -m json.tool<CR> " format json
+map <leader>pj :%!python3 -m json.tool<CR> " format json
 map <leader>px :%!xmllint % --format<CR> " format xml
 noremap <Leader>w :w<CR> " Save the current buffer using the leader key
 noremap <Leader>e :wq<CR> " Save and exit Vim using the leader key
