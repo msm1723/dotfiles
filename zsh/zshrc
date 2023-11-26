@@ -114,3 +114,5 @@ alias br="brew"
 alias bru="brew upgrade"
 alias brd="brew doctor"
 alias brc="brew cleanup"
+
+alias pi1="ssh siarhei@192.168.100.6"
