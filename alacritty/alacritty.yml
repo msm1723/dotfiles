@@ -15,15 +15,18 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
+  position:
+    x: 0
+    y: 0
   padding:
-    x: 1
-    y: 1
+    x: 4
+    y: 4
 
   dimensions:
     columns: 140
     lines: 25
 
-  opacity: 0.965
+  opacity: 0.96
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -95,7 +98,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing
   offset:
    x: 0
-   y: 0
+   y: 2
 
   # Note: This requires RESTART
   # By default when you change the offset above you'll see an issue,
@@ -105,7 +108,7 @@ font:
   glyph_offset:
    x: 0
    # Keeping this as half of offset to vertically align the text in cursor
-   y: 0
+   y: 4
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -119,7 +122,7 @@ mouse:
   #double_click: { threshold: 300 }
   #triple_click: { threshold: 300 }
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: false
+  hide_when_typing: true
 
 cursor:
   # Cursor style
