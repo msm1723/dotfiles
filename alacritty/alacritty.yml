@@ -132,7 +132,7 @@ cursor:
   #   - _ Underline
   #   - | Beam
   style:
-    shape: Beam
+    shape: Block
     blinking: Always
   vi_mode_style:
     shape: Beam
