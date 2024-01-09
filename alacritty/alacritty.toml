@@ -32,7 +32,7 @@ unfocused_hollow = true
 
 [cursor.style]
 blinking = "Always"
-shape = "Beam"
+shape = "Block"
 
 [cursor.vi_mode_style]
 blinking = "Always"
