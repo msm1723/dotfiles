@@ -1,0 +1,232 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x928374"
+blue = "0x7daea3"
+cyan = "0x89b482"
+green = "0xa9b665"
+magenta = "0xd3869b"
+red = "0xea6962"
+white = "0xdfbf8e"
+yellow = "0xe3a84e"
+
+[colors.normal]
+black = "0x665c54"
+blue = "0x7daea3"
+cyan = "0x89b482"
+green = "0xa9b665"
+magenta = "0xd3869b"
+red = "0xea6962"
+white = "0xdfbf8e"
+yellow = "0xe78a4e"
+
+[colors.primary]
+background = "0x282828"
+foreground = "0xdfbf8e"
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Beam"
+
+[cursor.vi_mode_style]
+blinking = "Always"
+shape = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Victor Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Victor Mono"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 4
+
+[font.italic]
+family = "Victor Mono"
+style = "Italic"
+
+[font.normal]
+family = "Victor Mono"
+style = "Medium"
+
+[font.offset]
+x = 0
+y = 2
+
+[[keyboard.bindings]]
+action = "Hide"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001&"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001%"
+key = "V"
+mods = "Option"
+
+[[keyboard.bindings]]
+chars = "\u0001\""
+key = "H"
+mods = "Option"
+
+[[keyboard.bindings]]
+chars = "\u0001w"
+key = "W"
+mods = "Option"
+
+[[keyboard.bindings]]
+chars = "\u0001b"
+key = "B"
+mods = "Option"
+
+[[keyboard.bindings]]
+chars = "\u00011"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00012"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00013"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00014"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00015"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00016"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00017"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00018"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00019"
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001p"
+key = "LBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "RBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Command"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+args = ["-l", "-c", "tmux attach || tmux new -s base"]
+program = "/bin/zsh"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+opacity = 0.96
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 140
+lines = 25
+
+[window.padding]
+x = 0
+y = 0
+
+[window.position]
+x = 0
+y = 0
