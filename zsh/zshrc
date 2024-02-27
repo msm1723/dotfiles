@@ -119,7 +119,22 @@ alias brc="brew cleanup"
 alias d="docker"
 alias drmi="docker image prune"
 alias drm="docker ps -aq | xargs docker stop | xargs docker rm"
+dockershell() {
+  if [ "$#" -lt 1 ]; then
+    echo "Usage: dshell <container-id> [shell=sh]"
+    return 1
+  fi
 
-## GIT
+  # Default shell
+  SHELL_TYPE="/bin/bash"
+
+  # If the second argument is provided and it is 'shell=sh', use '/bin/sh'
+  if [ "$2" = "shell=sh" ]; then
+    SHELL_TYPE="/bin/sh"
+  fi
+
+  docker exec -it $1 $SHELL_TYPE
+}
+alias dsh='dockershell'
 alias gconf="git config --list --show-origin"
 
