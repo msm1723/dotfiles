@@ -35,11 +35,11 @@ unfocused_hollow = true  # If this is `true`, the cursor will be rendered as a h
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-blinking = "Always"
+blinking = "Never"
 shape = "Block"
 
 [cursor.vi_mode_style]
-blinking = "Always"
+blinking = "Never"
 shape = "Beam"
 
 [env]
@@ -96,10 +96,12 @@ bindings = [
     {chars = "\u0001n", key = "RBracket", mods = "Command"},  # command + ] - to go to previous tmux window
     {chars = "\u001BB", key = "Left", mods = "Command"},  # jump word left
     {chars = "\u001BF", key = "Right", mods = "Command"},  # jump word right
+    {chars = "\u0001", key = "Left", mods = "Option"},  # jump begging of line
+    {chars = "\u0005", key = "Right", mods = "Option"},  # jump end of line
     {chars = "\u0001\u0025", key = "V", mods = "Option"},  # new pane (vertical)
     {chars = "\u0001\u0022", key = "H", mods = "Option"},  # new pane (horizontal)
-    {chars = "\u0001w", key = "W", mods = "Option"},  # close pane
     {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
+    {chars = "\u0001w", key = "W", mods = "Option"},  # close pane
 ]
 
 [mouse]
@@ -134,3 +136,4 @@ y = 0
 [window.position]
 x = 0
 y = 0
+
