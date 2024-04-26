@@ -1,5 +1,3 @@
-live_config_reload = true
-
 [colors]
 draw_bold_text_with_bright_colors = true
 
@@ -74,15 +72,16 @@ y = 2
 
 [keyboard]
 bindings = [
-    {action = "Hide", key = "H", mods = "Command"},
-    {action = "Quit", key = "Q", mods = "Command"},
-    {action = "Paste", key = "V", mods = "Command"},
-    {action = "Copy", key = "C", mods = "Command"},
+    {chars = "\u0001c", key = "T", mods = "Command"},  # new window (tab)
+    {action = "Hide", key = "H", mods = "Option"},   # hide terminal (works with mods='Command')
+    {action = "Quit", key = "Q", mods = "Option"},   # close terminal (works with mods='Command')
+    {chars = "\u0001w", key = "W", mods = "Command"},  # close pane
+    {chars = "\u0001&", key = "W", mods = "Command|Shift"},  # close window (tab)
+    {chars = "\u0001\u0025", key = "S", mods = "Command"},  # new pane (vertical)
+    {chars = "\u0001\u0022", key = "S", mods = "Command|Shift"},  # new pane (horizontal)
     {action = "ResetFontSize", key = "Key0", mods = "Command"},
     {action = "IncreaseFontSize", key = "Equals", mods = "Command"},
     {action = "DecreaseFontSize", key = "Minus", mods = "Command"},
-    {chars = "\u0001c", key = "T", mods = "Command"},  # new window
-    {chars = "\u0001&", key = "W", mods = "Command"},  # close window
     {chars = "\u00011", key = "Key1", mods = "Command"},
     {chars = "\u00012", key = "Key2", mods = "Command"},
     {chars = "\u00013", key = "Key3", mods = "Command"},
@@ -94,16 +93,15 @@ bindings = [
     {chars = "\u00019", key = "Key9", mods = "Command"},
     {chars = "\u0001p", key = "LBracket", mods = "Command"},  # command + [ - to go to previous tmux window
     {chars = "\u0001n", key = "RBracket", mods = "Command"},  # command + ] - to go to previous tmux window
+    {action = "Paste", key = "V", mods = "Command"},
+    {action = "Copy", key = "C", mods = "Command"},
     {chars = "\u001BB", key = "Left", mods = "Command"},  # jump word left
     {chars = "\u001BF", key = "Right", mods = "Command"},  # jump word right
     {chars = "\u0001", key = "Left", mods = "Option"},  # jump begging of line
     {chars = "\u0005", key = "Right", mods = "Option"},  # jump end of line
-    {chars = "\u0015", key = "Back", mods = "Option"},  # delete line
     {chars = "\u001b\u007f", key = "Back", mods = "Command"},  # delete word left
-    {chars = "\u0001\u0025", key = "V", mods = "Option"},  # new pane (vertical)
-    {chars = "\u0001\u0022", key = "H", mods = "Option"},  # new pane (horizontal)
+    {chars = "\u0015", key = "Back", mods = "Option"},  # delete line
     {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
-    {chars = "\u0001w", key = "W", mods = "Option"},  # close pane
 ]
 
 [mouse]
