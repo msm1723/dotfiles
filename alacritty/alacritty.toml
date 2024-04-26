@@ -98,6 +98,8 @@ bindings = [
     {chars = "\u001BF", key = "Right", mods = "Command"},  # jump word right
     {chars = "\u0001", key = "Left", mods = "Option"},  # jump begging of line
     {chars = "\u0005", key = "Right", mods = "Option"},  # jump end of line
+    {chars = "\u0015", key = "Back", mods = "Option"},  # delete line
+    {chars = "\u001b\u007f", key = "Back", mods = "Command"},  # delete word left
     {chars = "\u0001\u0025", key = "V", mods = "Option"},  # new pane (vertical)
     {chars = "\u0001\u0022", key = "H", mods = "Option"},  # new pane (horizontal)
     {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
