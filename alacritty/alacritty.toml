@@ -124,18 +124,18 @@ args = ["-l", "-c", "tmux attach || tmux new -s base"]
 program = "/bin/zsh"
 
 [window]
-decorations = "full"
+decorations = "none"
 dynamic_padding = false
-opacity = 0.96
+opacity = 0.9
 startup_mode = "Windowed"
 
 [window.dimensions]
-columns = 140
-lines = 25
+columns = 231
+lines = 53
 
 [window.padding]
-x = 0
-y = 0
+x = 3
+y = 10
 
 [window.position]
 x = 0
