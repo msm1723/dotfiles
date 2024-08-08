@@ -78,7 +78,7 @@ bindings = [
     {chars = "\u0001w", key = "W", mods = "Command"},  # close pane
     {chars = "\u0001&", key = "W", mods = "Command|Shift"},  # close window (tab)
     {chars = "\u0001\u0025", key = "S", mods = "Command"},  # new pane (vertical)
-    {chars = "\u0001\u0022", key = "S", mods = "Command|Shift"},  # new pane (horizontal)
+    {chars = "\u0001\u0022", key = "S", mods = "Command|Option"},  # new pane (horizontal)
     {action = "ResetFontSize", key = "Key0", mods = "Command"},
     {action = "IncreaseFontSize", key = "Equals", mods = "Command"},
     {action = "DecreaseFontSize", key = "Minus", mods = "Command"},
@@ -102,6 +102,10 @@ bindings = [
     {chars = "\u001b\u007f", key = "Back", mods = "Command"},  # delete word left
     {chars = "\u0015", key = "Back", mods = "Option"},  # delete line
     {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
+    {chars = "\u001b[1;9D", key = "Left", mods = "Command|Option"},  # focus left pane
+    {chars = "\u001b[1;9C", key = "Right", mods = "Command|Option"},  # focus right pane
+    {chars = "\u001b[1;9A", key = "Up", mods = "Command|Option"},  # focus up pane
+    {chars = "\u001b[1;9B", key = "Down", mods = "Command|Option"},  # focus down pane
 ]
 
 [mouse]
