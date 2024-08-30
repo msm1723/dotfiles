@@ -111,7 +111,7 @@ alias tt="tmux attach || tmux new -s base"
 
 ## Homebreow
 alias br="brew"
-alias bru="brew upgrade"
+alias bru="brew upgrade --greedy"
 alias brd="brew doctor"
 alias brc="brew cleanup"
 
