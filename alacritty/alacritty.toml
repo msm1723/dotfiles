@@ -1,3 +1,4 @@
+
 [colors]
 draw_bold_text_with_bright_colors = true
 
@@ -73,6 +74,8 @@ y = 2
 [keyboard]
 bindings = [
     {chars = "\u0001c", key = "T", mods = "Command"},  # new window (tab)
+    {action = "ToggleMaximized", key = "m", mods = "Option"},
+    {action = "Minimize", key = "m", mods = "Command"},
     {action = "Hide", key = "H", mods = "Option"},   # hide terminal (works with mods='Command')
     {action = "Quit", key = "Q", mods = "Option"},   # close terminal (works with mods='Command')
     {chars = "\u0001w", key = "W", mods = "Command"},  # close pane
@@ -93,6 +96,9 @@ bindings = [
     {chars = "\u00019", key = "Key9", mods = "Command"},
     {chars = "\u0001p", key = "LBracket", mods = "Command"},  # command + [ - to go to previous tmux window
     {chars = "\u0001n", key = "RBracket", mods = "Command"},  # command + ] - to go to previous tmux window
+    {action = "SearchForward", key = "f", mods = "Command"},
+    {action = "SearchBackward", key = "b", mods = "Command"},
+    {action = "ToggleViMode", key = "v", mods = "Control"},
     {action = "Paste", key = "V", mods = "Command"},
     {action = "Copy", key = "C", mods = "Command"},
     {chars = "\u001BB", key = "Left", mods = "Command"},  # jump word left
@@ -123,11 +129,15 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 args = ["-l", "-c", "tmux attach || tmux new -s base"]
 program = "/bin/zsh"
 
+[general]
+live_config_reload = true
+
 [window]
 decorations = "none"
 dynamic_padding = false
 opacity = 0.9
 startup_mode = "Windowed"
+resize_increments = true
 
 [window.dimensions]
 columns = 175
