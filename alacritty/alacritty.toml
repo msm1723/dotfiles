@@ -138,8 +138,8 @@ x = 3
 y = 10
 
 [window.position]
-x = 30
-y = 30
+x = 250
+y = 150
 
 [terminal]
 
