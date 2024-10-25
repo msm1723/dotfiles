@@ -119,7 +119,7 @@ multiplier = 3
 save_to_clipboard = true  # When set to `true`, selected text will be copied to the primary clipboard.
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", "tmux attach || tmux new -s base"]
 program = "/bin/zsh"
 
@@ -130,14 +130,16 @@ opacity = 0.9
 startup_mode = "Windowed"
 
 [window.dimensions]
-columns = 231
-lines = 53
+columns = 175
+lines = 35
 
 [window.padding]
 x = 3
 y = 10
 
 [window.position]
-x = 0
-y = 0
+x = 30
+y = 30
+
+[terminal]
 
