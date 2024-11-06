@@ -75,6 +75,7 @@ y = 2
 bindings = [
     {chars = "\u0001c", key = "T", mods = "Command"},  # new window (tab)
     {action = "ToggleMaximized", key = "m", mods = "Option"},
+    {action = "ToggleFullscreen", key = "m", mods = "Control"},
     {action = "Minimize", key = "m", mods = "Command"},
     {action = "Hide", key = "H", mods = "Option"},   # hide terminal (works with mods='Command')
     {action = "Quit", key = "Q", mods = "Option"},   # close terminal (works with mods='Command')
@@ -105,8 +106,8 @@ bindings = [
     {chars = "\u001BF", key = "Right", mods = "Command"},  # jump word right
     {chars = "\u0001", key = "Left", mods = "Option"},  # jump begging of line
     {chars = "\u0005", key = "Right", mods = "Option"},  # jump end of line
-    {chars = "\u001b\u007f", key = "Back", mods = "Command"},  # delete word left
-    {chars = "\u0015", key = "Back", mods = "Option"},  # delete line
+    {chars = "\u001b\u007f", key = "Back", mods = "Option"},  # delete word left
+    {chars = "\u0015", key = "Back", mods = "Command"},  # delete line
     {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
     {chars = "\u001b[1;9D", key = "Left", mods = "Command|Option"},  # focus left pane
     {chars = "\u001b[1;9C", key = "Right", mods = "Command|Option"},  # focus right pane
