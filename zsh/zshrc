@@ -1,5 +1,5 @@
 ## Add some PATH
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/user/bin:/usr/local/sbin:$PATH"
 
 ## Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
