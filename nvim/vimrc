@@ -14,7 +14,7 @@ else
   "" List of additional packs minpac could install:
   call minpac#add('k-takata/minpac', {'type': 'opt'}) " pack manager .config/nvim/pack/{opt, start}
   call minpac#add('airblade/vim-gitgutter') " show git diff in nvim gutter
-  call minpac#add('altercation/vim-colors-solarized') " colorscheme
+  call minpac#add('shaunsingh/nord.nvim') " colorscheme
   call minpac#add('itchyny/lightline.vim') " status line colorscheme
   call minpac#add('prettier/vim-prettier') " will auto format files if they have/support the @format pragma annotation in the header of the file
   call minpac#add('tpope/vim-commentary') " commentout line 'gcc', commentout patagraph 'gcap', commentout visual selection 'gc'
@@ -30,7 +30,7 @@ else
     call minpack#add('roxma/nvim-yarp') " fix compatibility with vim8 plugins
     call minpack#add('roxma/vim-hug-neovim-rpc') " fix compatibility with vim8 plugins
   endif
-  call minpac#add('deoplete-plugins/deoplete-jedi')		" python autocompletion extension
+  call minpac#add('deoplete-plugins/deoplete-jedi') " python autocompletion extension
   
   "" Minpac utility commands (run manually):
   command! PackUpdate call minpac#update()
