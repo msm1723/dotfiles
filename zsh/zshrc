@@ -24,13 +24,10 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 # Set plugins (plugins not part of Oh-My-Zsh can be installed using githubusername/repo)
-antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle agkozak/zsh-z
 antigen bundle djui/alias-tips
-antigen bundle timer
 export TIMER_THRESHOLD=1
 
 # Set theme
@@ -48,7 +45,10 @@ plugins=(
 	git
 	z
     docker
-    kubectl
+    python
+    nats
+    timer
+    macos
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,7 +118,6 @@ alias brd="brew doctor"
 alias brc="brew cleanup"
 
 ## Docker
-alias d="docker"
 alias drmi="docker image prune"
 alias drm="docker ps -aq | xargs docker stop | xargs docker rm && docker network prune -f && docker volume prune -f && docker image prune -f"
 
