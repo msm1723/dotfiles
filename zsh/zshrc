@@ -44,12 +44,12 @@ antigen apply
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(
-#	git
-#	zsh-autosuggestions
-#	zsh-syntax-highlighting
-#	zsh-z
-#)
+plugins=(
+	git
+	z
+    docker
+    kubectl
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,7 +132,7 @@ dockershell() {
   SHELL_TYPE="/bin/bash"
 
   # If the second argument is provided and it is 'shell=sh', use '/bin/sh'
-  if [ "$2" = "shell=sh" ]; then
+  if [ "$2" = "sh" ]; then
     SHELL_TYPE="/bin/sh"
   fi
 
