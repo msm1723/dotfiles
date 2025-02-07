@@ -1,0 +1,147 @@
+"""" Run plugins with minpac
+""""
+
+packadd minpac
+
+if !exists('g:loaded_minpac')
+  "" In case if minpac is not available init with settings for plugin-less environment:
+  "" ...
+
+else
+  "" In case if minpac is available init with verbosity 3 (to see minpac work):
+  call minpac#init({'verbose': 3})
+
+  "" List of additional packs minpac could install:
+  call minpac#add('k-takata/minpac', {'type': 'opt'}) " pack manager .config/nvim/pack/{opt, start}
+  call minpac#add('airblade/vim-gitgutter') " show git diff in nvim gutter
+  call minpac#add('shaunsingh/nord.nvim') " colorscheme
+  call minpac#add('itchyny/lightline.vim') " status line colorscheme
+  call minpac#add('prettier/vim-prettier') " will auto format files if they have/support the @format pragma annotation in the header of the file
+  call minpac#add('tpope/vim-commentary') " commentout line 'gcc', commentout patagraph 'gcap', commentout visual selection 'gc'
+  call minpac#add('tpope/vim-endwise') " end certain structures automatically (if...end)
+  call minpac#add('tpope/vim-fugitive') " git commands like :G for git status
+  call minpac#add('tpope/vim-repeat') " plagin for repeat command . work well with (map)ped commands
+  call minpac#add('tpope/vim-surround') " work with surroundings like '' or ()
+  call minpac#add('machakann/vim-highlightedyank') " make yank visible
+  call minpac#add('Shougo/deoplete.nvim') " vim autocompletion plugin
+  call minpac#add('jamessan/vim-gnupg') " work with gnupg
+
+  if !has('nvim')
+    call minpack#add('roxma/nvim-yarp') " fix compatibility with vim8 plugins
+    call minpack#add('roxma/vim-hug-neovim-rpc') " fix compatibility with vim8 plugins
+  endif
+  call minpac#add('deoplete-plugins/deoplete-jedi') " python autocompletion extension
+  
+  "" Minpac utility commands (run manually):
+  command! PackUpdate call minpac#update()
+  command! PackClean call minpac#clean()
+  command! PackStatus call minpac#status()
+
+  "" Aappearance
+  set termguicolors
+  colorscheme gruvbox-material
+  highlight Comment cterm=italic gui=italic
+  let g:lightline = {'colorscheme': 'gruvbox_material'}
+  
+  "" Shougo/deoplete.nvim autocompletion
+  let g:deoplete#enable_at_startup = 1
+  
+  "" Function to fix Shougo/deoplete.nvim TAB select
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  endfunction
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  "" Configure vim gnupg
+  let g:GPGExecutable = "PINENTRY_USER_DATA='' gpg --trust-model always"
+endif
+
+""" Fix cursor back to Beam from Block when exit
+"""
+augroup RestoreCursorShapeOnExit
+    autocmd!
+    autocmd VimLeave * set guicursor=a:ver20
+augroup END
+
+"""" Init all common (packet agnostic) nvim settings
+""""
+set splitbelow " horizontal split below current.
+set splitright " vertical split to right of current.
+set inccommand=nosplit " live substitute
+set hlsearch " highlight search results
+set ignorecase " ignore case while search
+set smartcase " ignore case if search pattern is all lowercase
+set list " show whitespaces
+set number " show line numbers
+set mouse=a " enable mouse
+set wildmenu " show mathch files as menu when use TAB
+set lazyredraw " redraw only when we need to
+set cursorline " highlight current lin
+set hidden " make it possible to switch between buffers without saving
+set clipboard^=unnamed,unnamedplus " merge with system clopboard
+
+"" undo-persistence
+set undodir=~/.vim/undodir
+set undofile
+
+"" Filetype settings
+filetype on " try to recoginize type of edited file
+filetype plugin on " load plagins for recognized file
+filetype indent on " load scripts for indetion of recognized file
+
+"" Mappings file navigation
+nnoremap H 0 " begingin of line
+nnoremap L $ " end of line
+nnoremap J G " begingin of file
+nnoremap K gg " ending of file
+
+"" Mappings tmux navigator
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> {c-h} :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> {c-j} :<C-U>TmuxNavigateDown<cr>
+noremap <silent> {c-k} :<C-U>TmuxNavigateUp<cr>
+noremap <silent> {c-l} :<C-U>TmuxNavigateRight<cr>
+
+"" Show all buffers in tabs, or to close all tabs (toggle: it alternately executes  :tab ball and :tabo)
+let notabs = 0
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+"" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+"" Use <C-S> to clear the highlighting of :set hlsearch.
+if maparg('<C-S>', 'n') ==# ''
+  nnoremap <silent> <C-S> :nohlsearch<CR><C-S>
+endif
+
+"" Leader actions
+map <SPACE> <leader>
+"let mapleader = "\" " common leader mapping (default)
+
+set notimeout " no timeout for leader (wait forever for mapped key after pressing leader)
+set showcmd " show <leader> pressed
+map <leader>pj :%!python3 -m json.tool<CR> " format json
+map <leader>px :%!xmllint % --format<CR> " format xml
+noremap <Leader>w :w<CR> " Save the current buffer using the leader key
+noremap <Leader>e :wq<CR> " Save and exit Vim using the leader key
+noremap <Leader>q :q!<CR> " Exit without saving using the leader key
+nnoremap <leader>c :nohl<CR> " Clear highlighting
+
+"" Kill the arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+
+"" Just a reminders for some usefull combinations (insert mode actions)
+"CTRL-W    delete word to the left of cursor
+"CTRL-O D  delete everything to the right of cursor
+"CTRL-U    delete everything to the left of cursor
+"CTRL-H    backspace/delete
+"CTRL-J    insert newline (easier than reaching for the return key)
+"CTRL-T    indent current line
+"CTRL-D    un-indent current line
+"Typing Ctrl-F during `/` search will open search history.
