@@ -78,24 +78,24 @@ TERM = "xterm-256color"
 size = 14.0
 
 [font.bold]
-family = "Victor Mono"
-style = "Bold"
+family = "Cascadia Code"
+style = "Regular"
 
 [font.bold_italic]
-family = "Victor Mono"
-style = "Bold Italic"
+family = "Cascadia Code"
+style = "Italic"
 
 [font.glyph_offset]
 x = 0
 y = 4
 
 [font.italic]
-family = "Victor Mono"
-style = "Italic"
+family = "Cascadia Code"
+style = "ExtraLight Italic"
 
 [font.normal]
-family = "Victor Mono"
-style = "Medium"
+family = "Cascadia Code"
+style = "ExtraLight"
 
 [font.offset]
 x = 0
