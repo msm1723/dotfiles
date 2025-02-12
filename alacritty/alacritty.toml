@@ -164,23 +164,12 @@ program = "/bin/zsh"
 live_config_reload = true
 
 [window]
-decorations = "none"
-dynamic_padding = false
-opacity = 0.8
+decorations = "Full"
 startup_mode = "Windowed"
+opacity = 0.95
+dynamic_padding = true
 resize_increments = true
-
-[window.dimensions]
-columns = 175
-lines = 35
-
-[window.padding]
-x = 5
-y = 5
-
-[window.position]
-x = 250
-y = 150
+title = "VITA BREVIS ARS LONGA"
 
 [terminal]
 
