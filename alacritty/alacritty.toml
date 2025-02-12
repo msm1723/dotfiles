@@ -85,10 +85,6 @@ style = "Regular"
 family = "Cascadia Code"
 style = "Italic"
 
-[font.glyph_offset]
-x = 0
-y = 4
-
 [font.italic]
 family = "Cascadia Code"
 style = "ExtraLight Italic"
@@ -96,6 +92,10 @@ style = "ExtraLight Italic"
 [font.normal]
 family = "Cascadia Code"
 style = "ExtraLight"
+
+[font.glyph_offset]
+x = 0
+y = 2
 
 [font.offset]
 x = 0
@@ -166,7 +166,7 @@ live_config_reload = true
 [window]
 decorations = "none"
 dynamic_padding = false
-opacity = 0.9
+opacity = 0.8
 startup_mode = "Windowed"
 resize_increments = true
 
@@ -175,8 +175,8 @@ columns = 175
 lines = 35
 
 [window.padding]
-x = 3
-y = 10
+x = 5
+y = 5
 
 [window.position]
 x = 250
