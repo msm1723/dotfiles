@@ -3,6 +3,9 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
+# Just in case
+export TERM="xterm-256color"
+
 # Clone antidote if necessary.
 [[ -e ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
