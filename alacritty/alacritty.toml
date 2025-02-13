@@ -70,11 +70,11 @@ style = "ExtraLight"
 
 [font.glyph_offset]
 x = 0
-y = 4
+y = 0
 
 [font.offset]
 x = 0
-y = 8
+y = 0
 
 [keyboard]
 bindings = [
