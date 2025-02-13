@@ -18,7 +18,7 @@ program = "/bin/zsh"
 [window]
 decorations = "Full"
 startup_mode = "Windowed"
-opacity = 0.95
+opacity = 0.9
 dynamic_padding = true
 resize_increments = true
 title = "VITA BREVIS ARS LONGA"
@@ -70,11 +70,11 @@ style = "ExtraLight"
 
 [font.glyph_offset]
 x = 0
-y = 2
+y = 4
 
 [font.offset]
 x = 0
-y = 2
+y = 8
 
 [keyboard]
 bindings = [
