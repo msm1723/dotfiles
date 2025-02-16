@@ -1,42 +1,44 @@
 [general]
 live_config_reload = true
-import = [
-    "~/.config/alacritty/themes/themes/kanagawa_wave.toml"
-]
+import = ["~/.config/alacritty/themes/themes/kanagawa_wave.toml"]
 
 [env]
 TERM = "xterm-256color"
 
 [colors]
 draw_bold_text_with_bright_colors = true
-transparent_background_colors = true
+transparent_background_colors = false
 
-[terminal.shell]
-args = ["-l", "-c", "tmux attach || tmux new -s base"]
-program = "/bin/zsh"
+#[terminal.shell]
+#args = ["-l", "-c", "tmux attach || tmux new -s base"]
+#program = "/bin/zsh"
 
 [window]
-decorations = "Full"
+decorations = "Buttonless"
 startup_mode = "Windowed"
-opacity = 0.9
+opacity = 1.0
 dynamic_padding = true
 resize_increments = true
-title = "VITA BREVIS ARS LONGA"
+option_as_alt = "OnlyRight"
+
+[window.padding]
+x = 4
+y = 0
 
 [cursor]
-unfocused_hollow = true  # If this is `true`, the cursor will be rendered as a hollow box when the window is not focused.
+unfocused_hollow = false  # If this is `true`, the cursor will be rendered as a hollow box when the window is not focused.
 
 [cursor.style]
 # Values for `style`:
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-blinking = "Never"
-shape = "Block"
+blinking = "Always"
+shape = "Beam"
 
 [cursor.vi_mode_style]
-blinking = "Never"
-shape = "Beam"
+blinking = "Always"
+shape = "Block"
 
 [mouse]
 hide_when_typing = true
@@ -52,21 +54,21 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 [font]
 size = 14.0
 
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Light"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Light Italic"
+
 [font.bold]
-family = "Cascadia Code"
+family = "CaskaydiaCove Nerd Font"
 style = "Regular"
 
 [font.bold_italic]
-family = "Cascadia Code"
-style = "Italic"
-
-[font.italic]
-family = "Cascadia Code"
-style = "ExtraLight Italic"
-
-[font.normal]
-family = "Cascadia Code"
-style = "ExtraLight"
+family = "CaskaydiaCove Nerd Font"
+style = "Regular Italic"
 
 [font.glyph_offset]
 x = 0

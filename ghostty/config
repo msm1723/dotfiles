@@ -1,0 +1,17 @@
+theme = Kanagawa Wave
+font-family = CaskaydiaCove Nerd Font
+font-style = Light
+font-style-bold = Regular 
+font-style-italic = Light Italic 
+font-style-bold-italic = Italic 
+font-size = 14
+mouse-hide-while-typing = true
+window-decoration = auto
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+background-opacity = 1.0
+background-blur-radius = 0
+background-blur-radius = 20
+
+# keybind = global:cmd+/=toggle_quick_terminal
+

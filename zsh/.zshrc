@@ -1,18 +1,35 @@
 #!/bin/zsh
 #
-# .zshrc - Run on interactive Zsh session.
+# .zshrc - Run on interactive Zsh session
 #
 
-# Just in case
-export TERM="xterm-256color"
-
-# Clone antidote if necessary.
+# Clone antidote if necessary
 [[ -e ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
-# Source antidote.
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-antidote load
+# Antidote
+# FAST
+#source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+#antidote load
+
+# ULTRA FAST
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
+# Lazy-load antidote from its functions directory.
+fpath=(${ZDOTDIR}/.antidote/functions $fpath)
+autoload -Uz antidote
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+fi
+# Source your static plugins file.
+source ${zsh_plugins}.zsh
+
+# Starship
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
 
 # Reload zshell rcconfiguration
 alias reload=${ZDOTDIR:-~}/.zshrc
