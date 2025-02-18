@@ -1,0 +1,57 @@
+# starship.toml
+
+# config schema
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+palette = "kanagawa"
+format = """
+[$directory](fg:sumi-ink-3 bg:carp-yellow)\
+[](fg:carp-yellow bg:surimi-orange)\
+[$container$rust$python$git_branch$hostname](fg:sumi-ink-3 bg:surimi-orange)\
+[](fg:surimi-orange bg:peach-red)\
+[$character](fg:sumi-ink-3 bg:peach-red)\
+[](fg:peach-red)\
+[ ](none)"""
+
+[palettes.kanagawa]
+peach-red = "#ff5d62"
+carp-yellow = "#e6c384"
+surimi-orange = "#ffa066"
+sumi-ink-3 = "#1f1f28"
+
+[character]
+format = "$symbol"
+success_symbol = ' \$ '
+error_symbol = " # "
+vimcmd_symbol = " N "
+vimcmd_replace_one_symbol = " R "
+vimcmd_replace_symbol = " R "
+vimcmd_visual_symbol = " V "
+
+[directory]
+format = " $path ($read_only)"
+read_only = "󰌾 "
+truncation_symbol = ""
+truncation_length = 1
+truncate_to_repo = false
+
+[git_branch]
+format = " $symbol$branch "
+
+[python]
+format = " $symbol($virtualenv )($version )"
+symbol = " "
+
+[rust]
+format = " $symbol($version )"
+symbol = " "
+
+[hostname]
+format = " $ssh_symbol$hostname "
+ssh_only = true
+ssh_symbol = "󰣀 "
+
+[container]
+format = " $symbol$name "
+symbol = " "
