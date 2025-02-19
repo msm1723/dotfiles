@@ -3,16 +3,17 @@
 # config schema
 "$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = false
-palette = "kanagawa"
 format = """
 [$directory](fg:sumi-ink-3 bg:carp-yellow)\
 [](fg:carp-yellow bg:surimi-orange)\
-[$container$rust$python$git_branch$hostname](fg:sumi-ink-3 bg:surimi-orange)\
+[$container$rust$python$lua$docker_context$git_branch$git_status$hostname$jobs](fg:sumi-ink-3 bg:surimi-orange)\
 [](fg:surimi-orange bg:peach-red)\
 [$character](fg:sumi-ink-3 bg:peach-red)\
 [](fg:peach-red)\
 [ ](none)"""
+
+add_newline = false
+palette = "kanagawa"
 
 [palettes.kanagawa]
 peach-red = "#ff5d62"
@@ -37,15 +38,27 @@ truncation_length = 1
 truncate_to_repo = false
 
 [git_branch]
+symbol = " "
 format = " $symbol$branch "
+
+[git_status]
+style = "black bg:surimi-orange"
+format = '([$all_status$ahead_behind]($style) )'
 
 [python]
 format = " $symbol($virtualenv )($version )"
-symbol = " "
+symbol = " "
 
 [rust]
 format = " $symbol($version )"
 symbol = " "
+
+[lua]
+format = " $symbol($version )"
+symbol = " "
+
+[package]
+symbol = '󰏗 '
 
 [hostname]
 format = " $ssh_symbol$hostname "
@@ -55,3 +68,19 @@ ssh_symbol = "󰣀 "
 [container]
 format = " $symbol$name "
 symbol = " "
+
+[docker_context]
+symbol = " "
+style = "black"
+#style = "fg:#06969A"
+format = "[$symbol]($style) $path"
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_extensions = ["Dockerfile"]
+
+[jobs]
+symbol = " "
+style = "black"
+#style = "red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
