@@ -34,7 +34,7 @@ vimcmd_visual_symbol = " V "
 format = " $path ($read_only)"
 read_only = "󰌾 "
 truncation_symbol = ""
-truncation_length = 1
+truncation_length = 2
 truncate_to_repo = false
 
 [git_branch]
