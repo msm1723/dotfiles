@@ -8,10 +8,10 @@ format = """
 [](fg:crystal-blue bg:lotus-ink1)\
 [$git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-ink1)\
 [](fg:lotus-ink1 bg:lotus-red)\
-[$docker_context$container$hostname$jobs$cmd_duration](fg:lotus-cyan bg:lotus-red)\
+[$docker_context$container$hostname$jobs$cmd_duration](bold fg:lotus-cyan bg:lotus-red)\
 [](fg:lotus-red)\
 $line_break\
-[$character](fg: lotus-yellow4)"""
+[$character](bold fg: lotus-yellow4)"""
 
 add_newline = true
 palette = "kanagawa"
@@ -89,7 +89,7 @@ symbol = " "
 
 [nodejs]
 format = "$symbol($version ) "
-smbol = " "
+symbol = " "
 
 [rust]
 format = "$symbol($version ) "
