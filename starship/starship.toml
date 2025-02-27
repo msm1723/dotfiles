@@ -4,13 +4,13 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 format = """
-[$directory](fg:sumi-ink-3 bg:carp-yellow)\
-[](fg:carp-yellow bg:surimi-orange)\
-[$git_branch$git_status$rust$python$lua$nodejs](fg:sumi-ink-3 bg:surimi-orange)\
-[](fg:surimi-orange bg:peach-red)\
+[$directory](bold fg:sumi-ink-3 bg:lotus-violet1)\
+[](fg:lotus-violet1 bg:lotus-blue1)\
+[$git_branch$git_status$rust$python$lua$nodejs](bold fg:sumi-ink-3 bg:lotus-blue1)\
+[](fg:lotus-blue1 bg:peach-red)\
 [$docker_context$container$hostname](fg:sumi-ink-3 bg:peach-red)\
 [](fg:peach-red bg:crystal-blue)\
-[$jobs$cmd_duration](fg:sumi-ink-3 bg:crystal-blue)\
+[$jobs$cmd_duration](bold fg:sumi-ink-3 bg:crystal-blue)\
 [](fg:crystal-blue)\
 $line_break\
 [$character](fg: lotus-yellow4)"""
@@ -77,11 +77,12 @@ truncate_to_repo = false
 read_only = "󰌾 "
 
 [git_branch]
-symbol = " "
 format = " $symbol$branch "
+symbol = " "
 
 [git_status]
-format = '([$all_status$ahead_behind]($style) )'
+format = "([$all_status$ahead_behind]($style) )"
+style = "black bg:lotus-blue1"
 
 [python]
 format = " $symbol($virtualenv )($version )"
@@ -122,7 +123,9 @@ number_threshold = 1
 format = "[$symbol]($style)"
 
 [cmd_duration]
-min_time = 1000
+min_time = 1_000
+show_milliseconds = false
+show_notifications = true
 format = " ⏱ $duration "
 style = "bold peach-red"
 
