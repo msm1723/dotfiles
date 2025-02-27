@@ -13,7 +13,7 @@ format = """
 $line_break\
 [$character](bold fg: lotus-yellow4)"""
 
-add_newline = true
+add_newline = false
 palette = "kanagawa"
 
 [palettes.kanagawa]
