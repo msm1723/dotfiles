@@ -4,14 +4,12 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 format = """
-[$directory](bold fg:sumi-ink-3 bg:lotus-violet1)\
-[](fg:lotus-violet1 bg:lotus-blue1)\
+[$directory](bold fg:sumi-ink-3 bg:crystal-blue)\
+[](fg:crystal-blue bg:lotus-blue1)\
 [$git_branch$git_status$rust$python$lua$nodejs](bold fg:sumi-ink-3 bg:lotus-blue1)\
 [](fg:lotus-blue1 bg:surimi-orange)\
-[$docker_context$container$hostname](fg:sumi-ink-3 bg:surimi-orange)\
-[](fg:surimi-orange bg:crystal-blue)\
-[$jobs$cmd_duration](bold fg:sumi-ink-3 bg:crystal-blue)\
-[](fg:crystal-blue)\
+[$docker_context$container$hostname$jobs$cmd_duration](fg:sumi-ink-3 bg:surimi-orange)\
+[](fg:surimi-orange)\
 $line_break\
 [$character](fg: lotus-yellow4)"""
 
