@@ -82,19 +82,19 @@ symbol = " "
 format = " $all_status$ahead_behind "
 
 [python]
-format = " $symbol($virtualenv )($version ) "
+format = "$symbol($virtualenv )($version ) "
 symbol = " "
 
 [nodejs]
-format = " $symbol($version ) "
+format = "$symbol($version ) "
 smbol = " "
 
 [rust]
-format = " $symbol($version ) "
+format = "$symbol($version ) "
 symbol = " "
 
 [lua]
-format = " $symbol($version ) "
+format = "$symbol($version ) "
 symbol = " "
 
 [package]
