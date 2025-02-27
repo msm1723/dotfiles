@@ -123,7 +123,7 @@ number_threshold = 1
 format = " $symbol "
 
 [cmd_duration]
-min_time = 5_00
+min_time = 2_000
 show_milliseconds = false
 show_notifications = true
 format = " ⏱ $duration "
