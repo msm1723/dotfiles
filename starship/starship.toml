@@ -5,11 +5,11 @@
 
 format = """
 [$directory](bold fg:sumi-ink-3 bg:crystal-blue)\
-[](fg:crystal-blue bg:lotus-blue1)\
-[$git_branch$git_status$rust$python$lua$nodejs](bold fg:sumi-ink-3 bg:lotus-blue1)\
-[](fg:lotus-blue1 bg:surimi-orange)\
-[$docker_context$container$hostname$jobs$cmd_duration](fg:sumi-ink-3 bg:surimi-orange)\
-[](fg:surimi-orange)\
+[](fg:crystal-blue bg:lotus-ink1)\
+[$git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-ink1)\
+[](fg:lotus-ink1 bg:lotus-red)\
+[$docker_context$container$hostname$jobs$cmd_duration](fg:lotus-cyan bg:lotus-red)\
+[](fg:lotus-red)\
 $line_break\
 [$character](fg: lotus-yellow4)"""
 
@@ -23,6 +23,8 @@ surimi-orange = "#ffa066"
 sumi-ink-3 = "#1f1f28"
 
 crystal-blue = "#7E9CD8"
+night-blue = "#2e3257"
+
 spring-green = "#98BB6C"
 boat-yellow1 = "#938056"
 boat-yellow2 = "#C0A36E"
