@@ -7,9 +7,11 @@ format = """
 [$directory](bold fg:sumi-ink-3 bg:lotus-violet1)\
 [](fg:lotus-violet1 bg:lotus-blue1)\
 [$git_branch$git_status$rust$python$lua$nodejs](bold fg:sumi-ink-3 bg:lotus-blue1)\
-[](fg:lotus-blue1 bg:peach-red)\
-[$docker_context$container$hostname](fg:sumi-ink-3 bg:peach-red)\
-[](fg:peach-red bg:crystal-blue)\
+[](fg:lotus-blue1 bg:surimi-orange)\
+[$docker_context$container$hostname](fg:sumi-ink-3 bg:surimi-orange)\
+[](fg:surimi-orange
+
+bg:crystal-blue)\
 [$jobs$cmd_duration](bold fg:sumi-ink-3 bg:crystal-blue)\
 [](fg:crystal-blue)\
 $line_break\
@@ -70,37 +72,37 @@ vimcmd_replace_symbol = "R "
 vimcmd_visual_symbol = "V "
 
 [directory]
-format = " $path ($read_only)"
+format = " $path ($read_only) "
 truncation_symbol = ""
 truncation_length = 0
 truncate_to_repo = false
 read_only = "󰌾 "
 
 [git_branch]
-format = " $symbol$branch "
+format = " $symbol$branch"
 symbol = " "
 
 [git_status]
-format = "([$all_status$ahead_behind]($style) )"
-style = "black bg:lotus-blue1"
+format = " [$all_status$ahead_behind](fg:dragon-black0 bg:lotus-blue1) "
 
 [python]
-format = " $symbol($virtualenv )($version )"
+format = " $symbol($virtualenv )($version ) "
 symbol = " "
 
 [nodejs]
-symbol = ' '
+format = " $symbol($version ) "
+smbol = " "
 
 [rust]
-format = " $symbol($version )"
+format = " $symbol($version ) "
 symbol = " "
 
 [lua]
-format = " $symbol($version )"
+format = " $symbol($version ) "
 symbol = " "
 
 [package]
-symbol = '󰏗 '
+symbol = "󰏗 "
 
 [hostname]
 format = " $ssh_symbol$hostname "
@@ -113,19 +115,18 @@ symbol = " "
 
 [docker_context]
 symbol = " "
-format = "[$symbol]($style) $path"
+format = " [$symbol] $path "
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 detect_extensions = ["Dockerfile"]
 
 [jobs]
 symbol = " "
 number_threshold = 1
-format = "[$symbol]($style)"
+format = " [$symbol]($bold) "
 
 [cmd_duration]
-min_time = 1_000
+min_time = 5_00
 show_milliseconds = false
 show_notifications = true
-format = " ⏱ $duration "
-style = "bold peach-red"
+format = " [⏱ $duration](fg:dragon-black0 bg:crystal-blue) "
 
