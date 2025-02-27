@@ -9,9 +9,7 @@ format = """
 [$git_branch$git_status$rust$python$lua$nodejs](bold fg:sumi-ink-3 bg:lotus-blue1)\
 [](fg:lotus-blue1 bg:surimi-orange)\
 [$docker_context$container$hostname](fg:sumi-ink-3 bg:surimi-orange)\
-[](fg:surimi-orange
-
-bg:crystal-blue)\
+[](fg:surimi-orange bg:crystal-blue)\
 [$jobs$cmd_duration](bold fg:sumi-ink-3 bg:crystal-blue)\
 [](fg:crystal-blue)\
 $line_break\
@@ -83,7 +81,7 @@ format = " $symbol$branch"
 symbol = " "
 
 [git_status]
-format = " [$all_status$ahead_behind](fg:dragon-black0 bg:lotus-blue1) "
+format = " $all_status$ahead_behind "
 
 [python]
 format = " $symbol($virtualenv )($version ) "
@@ -115,18 +113,18 @@ symbol = " "
 
 [docker_context]
 symbol = " "
-format = " [$symbol] $path "
+format = " $symbol$path "
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 detect_extensions = ["Dockerfile"]
 
 [jobs]
 symbol = " "
 number_threshold = 1
-format = " [$symbol]($bold) "
+format = " $symbol "
 
 [cmd_duration]
 min_time = 5_00
 show_milliseconds = false
 show_notifications = true
-format = " [⏱ $duration](fg:dragon-black0 bg:crystal-blue) "
+format = " ⏱ $duration "
 
