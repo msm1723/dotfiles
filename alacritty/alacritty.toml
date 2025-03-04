@@ -1,105 +1,82 @@
+[general]
+live_config_reload = true
+import = ["kanagawa.toml"]
+
+[env]
+TERM = "xterm-256color"
+
 [colors]
 draw_bold_text_with_bright_colors = true
+transparent_background_colors = false
 
-[colors.primary]
-background = "#2e3440"
-foreground = "#d8dee9"
-dim_foreground = "#a5abb6"
+#[terminal.shell]
+#args = ["-l", "-c", "tmux attach || tmux new -s base"]
+#program = "/bin/zsh"
 
-[colors.cursor]
-text = "#2e3440"
-cursor = "#d8dee9"
+[window]
+decorations = "Buttonless"
+startup_mode = "Windowed"
+opacity = 1.0
+dynamic_padding = true
+resize_increments = true
+option_as_alt = "OnlyRight"
 
-[colors.vi_mode_cursor]
-text = "#2e3440"
-cursor = "#d8dee9"
-
-[colors.selection]
-text = "CellForeground"
-background = "#4c566a"
-
-[colors.search.matches]
-foreground = "CellBackground"
-background = "#88c0d0"
-
-[colors.footer_bar]
-background = "#434c5e"
-foreground = "#d8dee9"
-
-[colors.normal]
-black = "#3b4252"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#88c0d0"
-white = "#e5e9f0"
-
-[colors.bright]
-black = "#4c566a"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#8fbcbb"
-white = "#eceff4"
-
-[colors.dim]
-black = "#373e4d"
-red = "#94545d"
-green = "#809575"
-yellow = "#b29e75"
-blue = "#68809a"
-magenta = "#8c738c"
-cyan = "#6d96a5"
-white = "#aeb3bb"
+[window.padding]
+x = 4
+y = 0
 
 [cursor]
-unfocused_hollow = true  # If this is `true`, the cursor will be rendered as a hollow box when the window is not focused.
+unfocused_hollow = false  # If this is `true`, the cursor will be rendered as a hollow box when the window is not focused.
 
 [cursor.style]
 # Values for `style`:
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-blinking = "Never"
-shape = "Block"
-
-[cursor.vi_mode_style]
-blinking = "Never"
+blinking = "Always"
 shape = "Beam"
 
-[env]
-TERM = "xterm-256color"
+[cursor.vi_mode_style]
+blinking = "Always"
+shape = "Block"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true  # When set to `true`, selected text will be copied to the primary clipboard.
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [font]
 size = 14.0
 
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Light"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Light Italic"
+
 [font.bold]
-family = "Victor Mono"
-style = "Bold"
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
 
 [font.bold_italic]
-family = "Victor Mono"
-style = "Bold Italic"
+family = "CaskaydiaCove Nerd Font"
+style = "Regular Italic"
 
 [font.glyph_offset]
 x = 0
-y = 4
-
-[font.italic]
-family = "Victor Mono"
-style = "Italic"
-
-[font.normal]
-family = "Victor Mono"
-style = "Medium"
+y = 0
 
 [font.offset]
 x = 0
-y = 2
+y = 0
 
 [keyboard]
 bindings = [
@@ -144,43 +121,6 @@ bindings = [
     {chars = "\u001b[1;9A", key = "Up", mods = "Command|Option"},  # focus up pane
     {chars = "\u001b[1;9B", key = "Down", mods = "Command|Option"},  # focus down pane
 ]
-
-[mouse]
-hide_when_typing = true
-
-[scrolling]
-history = 100000
-multiplier = 3
-
-[selection]
-save_to_clipboard = true  # When set to `true`, selected text will be copied to the primary clipboard.
-semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
-
-[terminal.shell]
-args = ["-l", "-c", "tmux attach || tmux new -s base"]
-program = "/bin/zsh"
-
-[general]
-live_config_reload = true
-
-[window]
-decorations = "none"
-dynamic_padding = false
-opacity = 0.9
-startup_mode = "Windowed"
-resize_increments = true
-
-[window.dimensions]
-columns = 175
-lines = 35
-
-[window.padding]
-x = 3
-y = 10
-
-[window.position]
-x = 250
-y = 150
 
 [terminal]
 

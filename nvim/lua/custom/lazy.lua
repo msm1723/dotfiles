@@ -23,7 +23,7 @@ require("lazy").setup({
 	-- import your plugins
 	spec = { import = "custom.plugins" },
 	-- colorscheme that will be used when installing plugins
-	install = { colorscheme = { "nord" } },
+	install = { colorscheme = { "kanagawa-wave" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })

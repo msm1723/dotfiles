@@ -1,0 +1,130 @@
+# starship.toml
+
+# config schema
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+[$directory](bold fg:sumi-ink-3 bg:crystal-blue)\
+[](fg:crystal-blue bg:lotus-red)\
+[$git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-red)\
+[](fg:lotus-red bg:surimi-orange)\
+[$docker_context$container$hostname$jobs$cmd_duration](bold fg:sumi-ink-3 bg:surimi-orange)\
+[](fg:surimi-orange)\
+$line_break\
+[$character](bold fg: lotus-yellow4)"""
+
+add_newline = false
+palette = "kanagawa"
+
+[palettes.kanagawa]
+peach-red = "#ff5d62"
+carp-yellow = "#e6c384"
+surimi-orange = "#ffa066"
+sumi-ink-3 = "#1f1f28"
+
+crystal-blue = "#7E9CD8"
+night-blue = "#2e3257"
+
+spring-green = "#98BB6C"
+boat-yellow1 = "#938056"
+boat-yellow2 = "#C0A36E"
+carp-yellow2 = "#E6C384"
+sakura-pink = "#D27E99"
+wave-red = "#E46876"
+katana-gray = "#717C7C"
+dragon-black0 = "#0d0c0c"
+lotus-ink1 = "#545464"
+lotus-gray = "#dcd7ba"
+lotus-white0 = "#d5cea3"
+lotus-violet1 = "#a09cac"
+lotus-blue1 = "#c7d7e0"
+lotus-green = "#6f894e"
+lotus-pink = "#b35b79"
+lotus-orange = "#cc6d00"
+lotus-orange2 = "#e98a00"
+lotus-yellow ="#77713f"
+lotus-yellow2 = "#836f4a"
+lotus-yellow3 = "#de9800"
+lotus-yellow4 = "#f9d791"
+lotus-red = "#c84053"
+lotus-red2 = "#d7474b"
+lotus-red3 = "#e82424"
+lotus-red4 = "#d9a594"
+lotus-aqua = "#597b75"
+lotus-aqua2 = "#5e857a"
+lotus-teal1 = "#4e8ca2"
+lotus-teal2 = "#6693bf"
+lotus-teal3 = "#5a7785"
+lotus-cyan = "#d7e3d8"
+
+[line_break]
+disabled = false
+
+[character]
+format = "$symbol"
+success_symbol = '\$ '
+error_symbol = "# "
+vimcmd_symbol = "N "
+vimcmd_replace_one_symbol = "R "
+vimcmd_replace_symbol = "R "
+vimcmd_visual_symbol = "V "
+
+[directory]
+format = " $path ($read_only) "
+truncation_symbol = ""
+truncation_length = 0
+truncate_to_repo = false
+read_only = "󰌾 "
+
+[git_branch]
+format = " $symbol$branch"
+symbol = " "
+
+[git_status]
+format = " $all_status$ahead_behind "
+
+[python]
+format = "$symbol($virtualenv )($version ) "
+symbol = " "
+
+[nodejs]
+format = "$symbol($version ) "
+symbol = " "
+
+[rust]
+format = "$symbol($version ) "
+symbol = " "
+
+[lua]
+format = "$symbol($version ) "
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[hostname]
+format = " $ssh_symbol$hostname "
+ssh_only = true
+ssh_symbol = "󰣀 "
+
+[container]
+format = " $symbol$name "
+symbol = " "
+
+[docker_context]
+symbol = " "
+format = " $symbol$path "
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_extensions = ["Dockerfile"]
+
+[jobs]
+symbol = " "
+number_threshold = 1
+format = " $symbol "
+
+[cmd_duration]
+min_time = 2_000
+show_milliseconds = false
+show_notifications = true
+format = " ⏱ $duration "
+
