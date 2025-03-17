@@ -12,11 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- colorscheme that will be used when installing plugins
+  install = { colorscheme = { 'kanagawa-wave' } },
   -- import plugins
   require 'plugins.neo-tree',
   require 'plugins.colortheme',
-  -- colorscheme that will be used when installing plugins
-  install = { colorscheme = { 'kanagawa-wave' } },
-  -- automatically check for plugin updates
+  require 'plugins.bufferline',
+  require 'plugins.lualine',
+  require 'plugins.colorizer',
+    -- automatically check for plugin updates
   checker = { enabled = true },
 })
