@@ -33,11 +33,6 @@ ueberzug_scale = 1  # Keep image scale at default
 ueberzug_offset = [0, 0, 0, 0]  # No offset adjustments needed
 
 [open]
-edit = [
-    {run = '${EDITOR:=vi} "$@"', desc = "$EDITOR", block = true, for = "unix"},
-	{run = "nvim %*", block = true, for = "windows"},
-]
-
 prepend_rules = [
     {name = "*.rnote", use = "open"},
     {name = "*/", use = ["open", "edit"]},
