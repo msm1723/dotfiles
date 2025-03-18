@@ -47,7 +47,7 @@ vim.opt.switchbuf = 'useopen'            -- Reuse open windows when switching bu
 
 -- Performance
 vim.opt.updatetime = 250                 -- Faster completion and diagnostics
-vim.opt.timeoutlen = 300                 -- Faster mapped sequence completion
+vim.opt.timeoutlen = 500                 -- Faster mapped sequence completion
 
 -- Scroll Behavior
 vim.opt.scrolloff = 4                    -- Lines above/below cursor when scrolling

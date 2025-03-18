@@ -10,7 +10,7 @@ return {
       's1n7ax/nvim-window-picker',
       version = '2.*',
       config = function()
-        require('window-picker').setup {
+        require('window-picker').setup({
           filter_rules = {
             include_current_win = false,
             autoselect_one = true,
@@ -22,7 +22,7 @@ return {
               buftype = { 'terminal', 'quickfix' },
             },
           },
-        }
+        })
       end,
     },
   },
@@ -33,7 +33,7 @@ return {
     vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
-    require('neo-tree').setup {
+    require('neo-tree').setup({
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
@@ -306,12 +306,11 @@ return {
           },
         },
       },
-    }
+    })
 
-    vim.cmd [[nnoremap ` <CMD>Neotree toggle position=right<CR>]]
+    vim.cmd([[nnoremap ` <CMD>Neotree toggle position=right<CR>]])
     vim.keymap.set('n', '<leader>e', '<CMD>Neotree toggle position=right<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>r', '<CMD>Neotree focus<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>ngs', '<CMD>Neotree float git_status<CR>', { noremap = true, silent = true }) -- open git status window
   end,
 }
-
