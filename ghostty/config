@@ -1,0 +1,51 @@
+# config ghostty
+
+# reload config
+# cmd + shift + ,
+# docs:
+# ghostty +show-config --default --docs | nvim
+# examples:
+# https://github.com/search?q=path%3Aghostty%2Fconfig&type=code
+
+font-size = 14
+font-family = CaskaydiaCove Nerd Font
+font-style = ExtraLight
+font-style-bold = Light 
+font-style-italic = ExtraLight Italic 
+font-style-bold-italic = Light Italic 
+font-thicken = true
+font-thicken-strength = 0
+
+adjust-cell-height = 0 
+adjust-strikethrough-position = -1
+adjust-underline-position = 2
+
+theme = Kanagawa Wave
+alpha-blending = linear-corrected
+background-opacity = 0.9
+background-blur-radius = 0
+
+window-title-font-family = CaskaydiaCove Nerd Font
+window-decoration = auto
+fullscreen = false
+maximize = true
+
+window-inherit-working-directory = false
+working-directory = home
+
+macos-titlebar-style = native
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+cursor-style = block
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+desktop-notifications = true
+
+keybind = global:cmd+`=toggle_quick_terminal
+keybind = shift+ctrl+left_bracket=previous_tab
+keybind = shift+ctrl+right_bracket=next_tab
+keybind = shift+ctrl+,=move_tab:-1
+keybind = shift+ctrl+.=move_tab:+1
+

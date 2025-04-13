@@ -1,0 +1,27 @@
+[[plugin.deps]]
+use = "dangooddd/line"
+rev = "5d4e13e"
+hash = "d224a5ae50489151d31c1dc45b985c37"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:no-status"
+rev = "b12a9ab"
+hash = "513a23ac28e1eaa626f3a1bb6c8130d0"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "b12a9ab"
+hash = "7918aab6a71caf31b58411f789195677"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "b12a9ab"
+hash = "5c9dda1a587b8f5b6f63e3d5375bda88"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "b12a9ab"
+hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+
+[flavor]
+deps = []

@@ -1,0 +1,126 @@
+[general]
+live_config_reload = true
+import = ["kanagawa.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+transparent_background_colors = false
+
+#[terminal.shell]
+#args = ["-l", "-c", "tmux attach || tmux new -s base"]
+#program = "/bin/zsh"
+
+[window]
+decorations = "Buttonless"
+startup_mode = "Windowed"
+opacity = 1.0
+dynamic_padding = true
+resize_increments = true
+option_as_alt = "OnlyRight"
+
+[window.padding]
+x = 4
+y = 0
+
+[cursor]
+unfocused_hollow = false  # If this is `true`, the cursor will be rendered as a hollow box when the window is not focused.
+
+[cursor.style]
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+blinking = "Always"
+shape = "Beam"
+
+[cursor.vi_mode_style]
+blinking = "Always"
+shape = "Block"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true  # When set to `true`, selected text will be copied to the primary clipboard.
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Light"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Light Italic"
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
+
+[font.bold_italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+[keyboard]
+bindings = [
+    {chars = "\u0001c", key = "T", mods = "Command"},  # new window (tab)
+    {action = "ToggleMaximized", key = "m", mods = "Option"},
+    {action = "ToggleFullscreen", key = "m", mods = "Control"},
+    {action = "Minimize", key = "m", mods = "Command"},
+    {action = "Hide", key = "H", mods = "Option"},   # hide terminal (works with mods='Command')
+    {action = "Quit", key = "Q", mods = "Option"},   # close terminal (works with mods='Command')
+    {chars = "\u0001w", key = "W", mods = "Command"},  # close pane
+    {chars = "\u0001&", key = "W", mods = "Command|Shift"},  # close window (tab)
+    {chars = "\u0001\u0025", key = "S", mods = "Command"},  # new pane (vertical)
+    {chars = "\u0001\u0022", key = "S", mods = "Command|Option"},  # new pane (horizontal)
+    {action = "ResetFontSize", key = "Key0", mods = "Command"},
+    {action = "IncreaseFontSize", key = "Equals", mods = "Command"},
+    {action = "DecreaseFontSize", key = "Minus", mods = "Command"},
+    {chars = "\u00011", key = "Key1", mods = "Command"},
+    {chars = "\u00012", key = "Key2", mods = "Command"},
+    {chars = "\u00013", key = "Key3", mods = "Command"},
+    {chars = "\u00014", key = "Key4", mods = "Command"},
+    {chars = "\u00015", key = "Key5", mods = "Command"},
+    {chars = "\u00016", key = "Key6", mods = "Command"},
+    {chars = "\u00017", key = "Key7", mods = "Command"},
+    {chars = "\u00018", key = "Key8", mods = "Command"},
+    {chars = "\u00019", key = "Key9", mods = "Command"},
+    {chars = "\u0001p", key = "LBracket", mods = "Command"},  # command + [ - to go to previous tmux window
+    {chars = "\u0001n", key = "RBracket", mods = "Command"},  # command + ] - to go to previous tmux window
+    {action = "SearchForward", key = "f", mods = "Command"},
+    {action = "SearchBackward", key = "b", mods = "Command"},
+    {action = "ToggleViMode", key = "v", mods = "Control"},
+    {action = "Paste", key = "V", mods = "Command"},
+    {action = "Copy", key = "C", mods = "Command"},
+    {chars = "\u001BB", key = "Left", mods = "Command"},  # jump word left
+    {chars = "\u001BF", key = "Right", mods = "Command"},  # jump word right
+    {chars = "\u0001", key = "Left", mods = "Option"},  # jump begging of line
+    {chars = "\u0005", key = "Right", mods = "Option"},  # jump end of line
+    {chars = "\u001b\u007f", key = "Back", mods = "Option"},  # delete word left
+    {chars = "\u0015", key = "Back", mods = "Command"},  # delete line
+    {chars = "\u0001b", key = "B", mods = "Option"},  # synchronize panes input
+    {chars = "\u001b[1;9D", key = "Left", mods = "Command|Option"},  # focus left pane
+    {chars = "\u001b[1;9C", key = "Right", mods = "Command|Option"},  # focus right pane
+    {chars = "\u001b[1;9A", key = "Up", mods = "Command|Option"},  # focus up pane
+    {chars = "\u001b[1;9B", key = "Down", mods = "Command|Option"},  # focus down pane
+]
+
+[terminal]
+
