@@ -7,9 +7,20 @@ return {
       local bg_transparent = true
 
       require('kanagawa').setup({
+        compile = false, -- enable compiling the colorscheme
+        undercurl = true, -- enable undercurls
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+        terminalColors = true, -- define vim.g.terminal_color_{0,17}
         transparent = bg_transparent,
+        theme = 'wave',
         background = {
           dark = 'wave', -- or "dragon"/"lotus"
+          light = 'lotus',
         },
       })
 
