@@ -43,7 +43,7 @@ mouse-hide-while-typing = true
 
 desktop-notifications = true
 
-keybind = global:cmd+`=toggle_quick_terminal
+keybind = global:opt+`=toggle_quick_terminal
 keybind = shift+ctrl+left_bracket=previous_tab
 keybind = shift+ctrl+right_bracket=next_tab
 keybind = shift+ctrl+,=move_tab:-1
