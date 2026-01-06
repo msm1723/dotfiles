@@ -1,7 +1,11 @@
 --- @sync entry
-return {
-	entry = function()
-		local h = cx.active.current.hovered
-		ya.manager_emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
-	end,
-}
+local function entry()
+  local hovered = cx.active.current.hovered
+  if hovered and hovered.cha.is_dir then
+    ya.emit("cd", { hovered.url })
+  else
+    ya.emit("open", {})
+  end
+end
+
+return { entry = entry }

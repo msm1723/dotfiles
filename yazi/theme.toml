@@ -1,5 +1,9 @@
-# theme.toml
+## theme.toml
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [flavor]
 dark = "kanagawa"
+light = "kanagawa"
+
+#dark = "catppuccin-mocha"
+#light = "catppuccin-mocha"

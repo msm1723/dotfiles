@@ -1,27 +1,44 @@
 [[plugin.deps]]
-use = "dangooddd/line"
-rev = "5d4e13e"
-hash = "d224a5ae50489151d31c1dc45b985c37"
+use = "llanosrocas/yaziline"
+rev = "6266926"
+hash = "9917ab5cb9bdbab7ca7f2501f84f0f11"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:no-status"
-rev = "b12a9ab"
-hash = "513a23ac28e1eaa626f3a1bb6c8130d0"
+use = "yazi-rs/plugins:git"
+rev = "4e55902"
+hash = "36a484acf6a0a0219c543ccb4cee218f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "b12a9ab"
-hash = "7918aab6a71caf31b58411f789195677"
+rev = "4e55902"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:toggle-pane"
-rev = "b12a9ab"
-hash = "5c9dda1a587b8f5b6f63e3d5375bda88"
+use = "yazi-rs/plugins:parent-arrow"
+rev = "4e55902"
+hash = "99aa06d3014798d86001c324468d497f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "b12a9ab"
-hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+rev = "4e55902"
+hash = "3996fc74044bc44144b323686f887e1"
 
-[flavor]
-deps = []
+[[plugin.deps]]
+use = "yazi-rs/plugins:no-status"
+rev = "4e55902"
+hash = "3e023d31f29201efdac2a6ae35fedb78"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "4e55902"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-tab"
+rev = "4e55902"
+hash = "99aa06d3014798d86001c324468d497f"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"
