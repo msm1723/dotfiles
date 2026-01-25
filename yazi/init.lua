@@ -1,14 +1,12 @@
 -- main.lua
 
--- require("no-status"):setup()
-
 require("yaziline"):setup({
-	color = "#98c379",
-	secondary_color = "#5A6078",
-	default_files_color = "darkgray", -- color of the file counter when it's inactive
-	selected_files_color = "white",
-	yanked_files_color = "green",
-	cut_files_color = "red",
+	color = "#7E9CD8", -- waveBlue (primary accent)
+	secondary_color = "#54546D", -- sumiInk4 (muted separator)
+	default_files_color = "#727169", -- fujiGray
+	selected_files_color = "#DCD7BA", -- fujiWhite
+	yanked_files_color = "#98BB6C", -- autumnGreen
+	cut_files_color = "#E46876", -- sakuraPink (less aggressive than red)
 
 	separator_style = "angly", -- "angly" | "curvy" | "liney" | "empty"
 	separator_open = "",
@@ -27,6 +25,8 @@ require("yaziline"):setup({
 })
 
 require("full-border"):setup()
+
+require("folder-rules"):setup()
 
 Status:children_add(function(self)
 	local h = self._current.hovered

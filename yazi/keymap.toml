@@ -1,21 +1,47 @@
 # keymap.toml
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[mgr]
 [[mgr.prepend_keymap]]
-run = """shell 'zip -r "$0".zip $(basename "$0")' --interactive"""
-on = ["u", "z"]
-desc = "Zip hovered file/directory"
-
-[[input.prepend_keymap]]
-on   = "<Esc>"
-run  = "close"
-desc = "Cancel input"
+on   = ["u", "z"]
+run  = """shell --interactive '
+set -e
+# Use selection if present, otherwise hovered item
+items=("$@")
+if [ ${#items[@]} -eq 0 ]; then
+  items=("$0")
+fi
+# Collect parent directories
+parents=()
+for i in "${items[@]}"; do
+  parents+=("$(dirname "$i")")
+done
+# Ensure all items are from the same directory
+unique_parents=$(printf "%s\n" "${parents[@]}" | sort -u | wc -l)
+if [ "$unique_parents" -ne 1 ]; then
+  echo "Error: all selected items must be in the same directory"
+  exit 1
+fi
+cd "${parents[0]}"
+# Find first available archiveN.zip
+n=1
+while [ -e "archive$n.zip" ]; do
+  n=$((n + 1))
+done
+zip_name="archive$n.zip"
+# Zip only basenames (no absolute paths)
+zip -r "$zip_name" "${items[@]##*/}"
+'"""
+desc = "Zip selected items → archiveN.zip"
 
 [[mgr.prepend_keymap]]
-on = "<Space>"
-run = "toggle"
-desc = "Toggle selection"
+on  = ["g", "b"]
+run = 'shell -- ya emit cd "~/bin"'
+desc = "Jump to home bin directory"
+
+[[mgr.prepend_keymap]]
+on  = ["g", "l"]
+run = 'shell -- ya emit cd "~/gitlocal"'
+desc = "Jump to gitlocal directory"
 
 [[mgr.prepend_keymap]]
 on   = "l"
@@ -24,11 +50,13 @@ desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
 on  = "K"
-run = "plugin arrow -1"
+run = "plugin parent-arrow -1"
+desc = "Move up in parent directory"
 
 [[mgr.prepend_keymap]]
 on  = "J"
-run = "plugin arrow 1"
+run = "plugin parent-arrow 1"
+desc = "Move down in parent directory"
 
 [[mgr.prepend_keymap]]
 on   = "t"
@@ -36,22 +64,24 @@ run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
 [[mgr.prepend_keymap]]
-on   = "T"
+on   = ","
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
 [[mgr.prepend_keymap]]
-on   = "T"
+on   = "."
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
 [[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+desc = "Jump to repository root"
 
 [[mgr.prepend_keymap]]
 on = "<C-p>"
 run = 'shell -- qlmanage -p "$@"'
+desc = "Open current file in Quick Look"
 
 [[mgr.prepend_keymap]]
 on   = "!"

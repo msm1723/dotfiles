@@ -5,38 +5,23 @@ hash = "9917ab5cb9bdbab7ca7f2501f84f0f11"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "4e55902"
+rev = "6c71385"
 hash = "36a484acf6a0a0219c543ccb4cee218f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "4e55902"
+rev = "6c71385"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:parent-arrow"
-rev = "4e55902"
-hash = "99aa06d3014798d86001c324468d497f"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "4e55902"
+rev = "6c71385"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:no-status"
-rev = "4e55902"
-hash = "3e023d31f29201efdac2a6ae35fedb78"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "4e55902"
+rev = "6c71385"
 hash = "8a7c58225816a163a6e8730c0adafbc8"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:smart-tab"
-rev = "4e55902"
-hash = "99aa06d3014798d86001c324468d497f"
 
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
