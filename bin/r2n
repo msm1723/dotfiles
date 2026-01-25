@@ -1,0 +1,34 @@
+#!/bin/sh
+echo "How to use:"
+echo "r2n.sh <PORT: 8888> <NATS_HOST: nats> <NATS_PORT: 4222>"
+echo "Example:"
+echo "r2n.sh"
+echo "or if you what change default params:"
+echo "r2n.sh 8889 nats_host 4223"
+echo ""
+
+echo "============================================================"
+# remove rest2nats container if exists
+rest2nats_container=$(docker ps | grep rest2nats | awk '{print $1}')
+if [ -z "$rest2nats_container" ]; then
+    echo "No current container rest2nats..."
+else
+    echo "Removing current rest2nats container..."
+    docker rm -f $rest2nats_container
+fi
+echo ""
+
+echo "============================================================"
+# pull newest image
+echo "Pulling newest rest2nats image..."
+docker pull registry.git.tony/tony/utils/utility_images/rest2nats_proxy:master
+echo ""
+
+echo "============================================================"
+# deploy container
+echo "Deploying rest2nats container..."
+nats_network_name=$(docker inspect $(docker ps | grep nats | awk '{print $1;}') | grep -A1000 '"Networks"' | grep -B1000 'nats' | awk -F'"' '{print $2}' | awk 'NR==2')
+rest2nats_image=$(docker images | grep rest2nats_proxy | awk '{print $1}')
+echo "Running command:"
+echo "docker run -d --rm -p 127.0.0.1:${1-8888}:8080 --name rest2nats --network=${nats_network_name} ${rest2nats_image} -n nats://${2-nats}:${3-4222}"
+docker run -d --rm -p 127.0.0.1:${1-8888}:8080 --name rest2nats --network=$nats_network_name $rest2nats_image -n nats://${2-nats}:${3-4222}

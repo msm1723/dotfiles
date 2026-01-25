@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Check if two arguments are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <branch1> <branch2>"
+    exit 1
+fi
+
+branch1=$1
+branch2=$2
+
+# Checks if branch1 and branch2 points to same commit (are the same)
+if [ $(git rev-parse $branch1) = $(git rev-parse $branch2) ]; then
+    echo "Branches pointing to same commit"
+    exit 0
+fi
+
+# Find the merge base (common ancestor)
+merge_base=$(git merge-base $branch1 $branch2)
+
+# Checks if branch1 is merge base
+if [ $(git rev-parse $branch1) = $merge_base ]; then
+    echo "'$branch1' is merge base'"
+    exit 0
+fi
+
+# Check if branch2 is merge base
+if [ $(git rev-parse $branch2) = $merge_base ]; then
+    echo "'$branch2' is merge base"
+    exit 0
+fi
+
+# Check distance to merge base for both branches
+dist1=$(git rev-list --count $merge_base..$branch1)
+dist2=$(git rev-list --count $merge_base..$branch2)
+echo "'$branch1' is ahead of merge base on $dist1 commits"
+echo "'$branch2' is ahead of merge base on $dist2 commits"

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Define the backup directory
+BACKUP_DIR="$HOME/vscode_backup"
+
+# Create the backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Define VS Code settings directory
+VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+
+# Files to back up
+SETTINGS_FILE="$VSCODE_USER_DIR/settings.json"
+KEYBINDINGS_FILE="$VSCODE_USER_DIR/keybindings.json"
+SNIPPETS_DIR="$VSCODE_USER_DIR/snippets"
+
+# Backup settings.json
+if [ -f "$SETTINGS_FILE" ]; then
+    cp "$SETTINGS_FILE" "$BACKUP_DIR/"
+    echo "Backed up settings.json"
+else
+    echo "settings.json not found"
+fi
+
+# Backup keybindings.json
+if [ -f "$KEYBINDINGS_FILE" ]; then
+    cp "$KEYBINDINGS_FILE" "$BACKUP_DIR/"
+    echo "Backed up keybindings.json"
+else
+    echo "keybindings.json not found"
+fi
+
+# Backup snippets directory
+if [ -d "$SNIPPETS_DIR" ]; then
+    cp -r "$SNIPPETS_DIR" "$BACKUP_DIR/"
+    echo "Backed up snippets"
+else
+    echo "Snippets directory not found"
+fi
+
+# Save the list of installed extensions
+EXTENSIONS_LIST="$BACKUP_DIR/extensions-list.txt"
+code --list-extensions > "$EXTENSIONS_LIST"
+echo "Saved list of extensions to $EXTENSIONS_LIST"
+
+echo "Backup completed. All files are in $BACKUP_DIR"

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the date 2 days ago in YYYY-MM-DD format
+two_days_ago=$(date -v-2d +%Y-%m-%d)
+
+# List all images, print creation date and image ID, then filter out those newer than 2 days ago, and finally extract the image ID
+docker image ls --format '{{.CreatedAt}} {{.ID}}' | while read line; do
+  # Extract the image creation date and image ID
+  creation_date=$(echo $line | cut -d' ' -f1)
+  image_id=$(echo $line | awk '{print $NF}')
+
+  # If the image is older than 2 days, print the image ID
+  if [[ "$creation_date" < "$two_days_ago" ]]; then
+    echo $image_id
+  fi
+done | xargs -r docker rmi

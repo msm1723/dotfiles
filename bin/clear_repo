@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Check if the --old flag is set
+AUTO_DELETE_OLD=false
+if [[ "$1" == "--old" ]]; then
+    AUTO_DELETE_OLD=true
+fi
+
+# Get current timestamp for comparison
+one_month_ago=$(date -d "1 month ago" +%s)
+
+# Get all local branches except the current branch
+branches=$(git branch --format='%(refname:short)' | grep -vE "^\*")
+
+for branch in $branches; do
+    # Get the last commit timestamp of the branch
+    last_commit=$(git log -1 --format=%ct "$branch")
+
+    if $AUTO_DELETE_OLD; then
+        # If --old flag is used, delete branches older than 1 month automatically
+        if [[ $last_commit -lt $one_month_ago ]]; then
+            git branch -D "$branch"
+            echo "Deleted old local branch: $branch"
+        fi
+    else
+        # Otherwise, ask for confirmation before deleting
+        read -p "Delete branch '$branch'? (y = local, Y = local + remote, n = skip): " choice
+
+        case "$choice" in
+            y)
+                git branch -D "$branch"
+                echo "Deleted local branch: $branch"
+                ;;
+            Y)
+                git branch -D "$branch"
+                git push origin --delete "$branch" 2>/dev/null
+                echo "Deleted local and remote branch: $branch"
+                ;;
+            *)
+                echo "Skipped $branch"
+                ;;
+        esac
+    fi
+done

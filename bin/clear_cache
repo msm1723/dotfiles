@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Store the provided path
+TARGET_PATH=${1:-$PWD}
+
+# Echo cleaning path
+echo All __pycache__, .pytest_cache, .DS_Store will be recursively removed from: $TARGET_PATH
+
+# Find and remove all __pycache__ directories
+find "$TARGET_PATH" -type d -name '__pycache__' -exec rm -rf {} +
+
+# Find and remove all .pytest_cache directories
+find "$TARGET_PATH" -type d -name '.pytest_cache' -exec rm -rf {} +
+
+# Find and remove all .DS_Store directories
+find "$TARGET_PATH" -type d -name '.DS_Store' -exec rm -rf {} +
+

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Require service name
+SERVICE_NAME="${1:-}"
+if [[ -z "$SERVICE_NAME" ]]; then
+    echo "Usage: $0 <service_name> [--new]"
+    exit 1
+fi
+
+# Check for -new flag
+PULL_NEW_IMAGE=false
+if [[ "${2:-}" == "--new" ]]; then
+    PULL_NEW_IMAGE=true
+fi
+
+COMPOSE_FILE="docker-compose.local.yml"
+if [[ ! -f "$COMPOSE_FILE" ]]; then
+    echo "$COMPOSE_FILE not found"
+    exit 1
+fi
+
+# Extract full image name from compose config
+IMAGE_LINE=$(docker compose -f "$COMPOSE_FILE" config | awk "/^  $SERVICE_NAME:/{flag=1} flag && /image:/ {print \$2; exit}")
+
+if [[ -z "$IMAGE_LINE" ]]; then
+    echo "No image found for service '$SERVICE_NAME'"
+    exit 1
+fi
+
+IMAGE_NAME="${IMAGE_LINE%%:*}"
+TAG="${IMAGE_LINE#*:}"
+[[ "$IMAGE_NAME" == "$TAG" ]] && TAG="latest"
+
+FULL_IMAGE="$IMAGE_NAME:$TAG"
+
+echo "Service: $SERVICE_NAME"
+echo "Image:   $FULL_IMAGE"
+
+# Stop service
+echo "Stopping service..."
+docker compose -f "$COMPOSE_FILE" stop "$SERVICE_NAME"
+
+# Remove container
+echo "Removing container..."
+docker compose -f "$COMPOSE_FILE" rm -f "$SERVICE_NAME"
+
+if $PULL_NEW_IMAGE; then
+    echo "Removing image $FULL_IMAGE..."
+    docker image rm -f "$FULL_IMAGE" || true
+
+    echo "Pulling image $FULL_IMAGE..."
+    docker pull "$FULL_IMAGE"
+else
+    echo "Reusing existing image $FULL_IMAGE"
+fi
+
+# Start service
+echo "Starting service..."
+docker compose -f "$COMPOSE_FILE" up -d "$SERVICE_NAME"

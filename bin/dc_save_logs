@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Specify the Compose file
+COMPOSE_FILE="docker-compose.local.yml"
+
+# Get the project name from the output of docker compose config
+PROJECT_NAME=$(docker compose -f $COMPOSE_FILE config | grep '^name:' | awk '{print $2}' || basename "$PWD")
+
+# Define the output directory
+OUTPUT_DIR=~/Downloads/$PROJECT_NAME
+
+# Remove the directory if it already exists
+if [ -d "$OUTPUT_DIR" ]; then
+  rm -rf "$OUTPUT_DIR"
+fi
+
+# Create the directory
+mkdir -p "$OUTPUT_DIR"
+
+# Loop through all services and save logs to individual files
+for service in $(docker compose -f $COMPOSE_FILE config --services); do
+  docker compose -f $COMPOSE_FILE logs --no-color $service > "$OUTPUT_DIR/${service}_logs.txt"
+done
+
+echo "Logs saved to $OUTPUT_DIR"
+
