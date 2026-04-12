@@ -6,6 +6,8 @@ ohmyzsh/ohmyzsh path:plugins/z
 ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/nats
+ohmyzsh/ohmyzsh path:plugins/cargo
+ohmyzsh/ohmyzsh path:plugins/rust
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages

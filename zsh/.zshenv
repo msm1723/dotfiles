@@ -33,8 +33,8 @@ if [[ -d /opt/homebrew/bin ]]; then
 elif [[ -d /usr/local/bin ]]; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 fi
-export PATH="$HOME/bin:$PATH"
 
+export PATH="$(brew --prefix rustup)/bin:$HOME/bin:$PATH"
 # -------------------------------------------------------------------
 # Default editor
 # -------------------------------------------------------------------
