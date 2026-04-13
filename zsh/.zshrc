@@ -68,8 +68,11 @@ fi
 #======================================
 # zoxide - a better cd command
 #======================================
-eval "$(zoxide init zsh)"
-
+#if command -v zoxide >/dev/null 2>&1; then
+#  eval "$(zoxide init zsh)"
+#fi
+alias j='z'
+alias jj='zi'
 
 #======================================
 # Environment
@@ -86,7 +89,7 @@ export LC_ALL='en_US.UTF-8'  # mc cyrillic issue solved (:
 #======================================
 # Aliases
 #======================================
-## Reload zshell rcconfiguration
+# Reload zshell rcconfiguration
 alias reload=". ${ZDOTDIR:-~}/.zshrc"
 
 # System
@@ -104,29 +107,6 @@ alias n="nvim"
 alias vim="nvim"
 alias vi="nvim"
 
-# ls
-#alias ls='ls -GCF'  # color, multicolumns, filetypes
-#alias la='ls -A'  # all files except . and .. (almost all)
-#alias l.='ls -d .*'  # only hidden fil
-#alias ll='ls -lah'  # long list alphabetical sort
-#alias lt='ls -lahtr'  # long list oldest first sort
-#alias lz='ls -lahS'  # long list largest first
-#alias l='ls -dlh'  # long dir info
-
-# eza
-alias l="eza --icons"
-alias ls="eza --icons"
-alias ll="eza -lg --icons"
-alias la="eza -lag --icons"
-alias lt="eza -lTg --icons"
-alias lt1="eza -lTg --level=1 --icons"
-alias lt2="eza -lTg --level=2 --icons"
-alias lt3="eza -lTg --level=3 --icons"
-alias lta="eza -lTag --icons"
-alias lta1="eza -lTag --level=1 --icons"
-alias lta2="eza -lTag --level=2 --icons"
-alias lta3="eza -lTag --level=3 --icons"
-
 # Interactive remove by default
 alias rm='rm -i'
 alias mv='mv -i'
@@ -137,12 +117,6 @@ alias fqdn="host $(hostname)"
 
 # rsync
 alias rsynk="rsync -avzhP"
-
-# Homebreow
-alias bru="brew upgrade"
-alias brug="brew upgrade --greedy"
-alias brd="brew doctor"
-alias brc="brew cleanup"
 
 # Docker
 alias drmi="docker image prune"

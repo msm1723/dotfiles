@@ -1,33 +1,37 @@
+# Core OMZ bridge
 getantidote/use-omz  # handle OMZ dependencies
 ohmyzsh/ohmyzsh path:lib  # load OMZ's library
 
+# OMZ plugins
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/dash
+ohmyzsh/ohmyzsh path:plugins/eza
+ohmyzsh/ohmyzsh path:plugins/thefuck
 ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/z
 ohmyzsh/ohmyzsh path:plugins/docker
-ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/nats
-ohmyzsh/ohmyzsh path:plugins/cargo
+ohmyzsh/ohmyzsh path:plugins/postgres
+ohmyzsh/ohmyzsh path:plugins/python
+ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/rust
+ohmyzsh/ohmyzsh path:plugins/sublime
 ohmyzsh/ohmyzsh path:plugins/macos
+ohmyzsh/ohmyzsh path:plugins/zoxide
+ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/aliases
+ohmyzsh/ohmyzsh path:plugins/alias-finder
 
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
-djui/alias-tips
-
-mattmc3/ez-compinit
+# Community plugins
 zsh-users/zsh-completions
-
-zsh-users/zsh-history-substring-search
-
-# popular fish-like plugins
-mattmc3/zfunctions
+mattmc3/ez-compinit
 zsh-users/zsh-autosuggestions
-zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-history-substring-search
-
-# replaced by starship
-# ohmyzsh/ohmyzsh path:themes/murilasso.zsh-theme
-# ohmyzsh/ohmyzsh path:plugins/timer
+zsh-users/zsh-syntax-highlighting
+mattmc3/zfunctions
+fdellwing/zsh-bat
+djui/alias-tips
