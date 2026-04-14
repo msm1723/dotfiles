@@ -2,6 +2,17 @@
 
 # .zshrc - Run on interactive Zsh session
 
+# -------------------------------------------------------------------
+# PATH
+# -------------------------------------------------------------------
+# Add system-wide executable paths.
+#
+# On Intel macOS, Homebrew installs binaries into /usr/local/bin.
+# Neovim, LSPs, Treesitter, formatters, DAP, etc. all rely on this.
+if [[ -d /usr/local/bin ]]; then
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+export PATH="$(brew --prefix)/bin:$HOME/bin:$PATH"
 
 #======================================
 # Antidote plugin manager
@@ -43,7 +54,6 @@ antidote load
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
-
 #======================================
 # Tmux
 #======================================
@@ -64,27 +74,13 @@ if which tmux >/dev/null 2>&1; then
   fi
 fi
 
-
-#======================================
-# zoxide - a better cd command
-#======================================
-#if command -v zoxide >/dev/null 2>&1; then
-#  eval "$(zoxide init zsh)"
-#fi
-alias j='z'
-alias jj='zi'
-
 #======================================
 # Environment
 #======================================
 export GPG_TTY=$(tty)  # GNUPG encryption ask passphrase in terminal
 export PINENTRY_USER_DATA="USE_CURSES=1" # Tell the pinentry program dialog programs to use the nice, full-screen pinentry program
-DISABLE_AUTO_TITLE="true"  # Disable auto-setting terminal title for tmux pane
-COMPLETION_WAITING_DOTS="true"  # Display red dots whilst waiting for completion.
-DISABLE_UNTRACKED_FILES_DIRTY="true"  # Large repo fast status check
-HIST_FORMAT="'%Y-%m-%d %T:'$(echo -e '\t')"  # History with time
+export HIST_FORMAT="'%Y-%m-%d %T:'$(echo -e '\t')"  # History with time
 export LC_ALL='en_US.UTF-8'  # mc cyrillic issue solved (:
-
 
 #======================================
 # Aliases
@@ -140,6 +136,9 @@ alias dsh='dockershell'
 alias mc='mc --nosubshell'
 alias history="fc -t "$HIST_FORMAT" -il 1"
 
+# Zoxide
+alias j='z'
+alias jj='zi'
 
 #======================================
 # Yazi

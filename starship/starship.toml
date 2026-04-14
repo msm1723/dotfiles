@@ -8,7 +8,7 @@ format = """
 [](fg:crystal-blue bg:lotus-red)\
 [$git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-red)\
 [](fg:lotus-red bg:surimi-orange)\
-[$docker_context$container$hostname$jobs$cmd_duration](bold fg:sumi-ink-3 bg:surimi-orange)\
+[$docker_context$container$hostname$jobs$cmd_duration$status](bold fg:sumi-ink-3 bg:surimi-orange)\
 [](fg:surimi-orange)\
 $line_break\
 [$character](bold fg: lotus-yellow4)"""
@@ -60,14 +60,20 @@ lotus-cyan = "#d7e3d8"
 [line_break]
 disabled = false
 
+[status]
+disabled = false
+success_symbol = ""
+symbol = ""
+format = " $symbol $status "
+
 [character]
 format = "$symbol"
-success_symbol = '\$ '
-error_symbol = "# "
-vimcmd_symbol = "N "
-vimcmd_replace_one_symbol = "R "
-vimcmd_replace_symbol = "R "
-vimcmd_visual_symbol = "V "
+success_symbol = "[\\$](bold fg:lotus-yellow4) "
+error_symbol = "[\\$](bold fg:lotus-red3) "
+vimcmd_symbol = "[N](bold fg:lotus-yellow4) "
+vimcmd_replace_one_symbol = "[R](bold fg:lotus-yellow4) "
+vimcmd_replace_symbol = "[R](bold fg:lotus-yellow4) "
+vimcmd_visual_symbol = "[V](bold fg:lotus-yellow4) "
 
 [directory]
 format = " $path ($read_only) "

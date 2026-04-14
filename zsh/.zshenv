@@ -19,23 +19,6 @@
 #
 
 # -------------------------------------------------------------------
-# PATH
-# -------------------------------------------------------------------
-# Add system-wide executable paths.
-#
-# On Intel macOS, Homebrew installs binaries into /usr/local/bin.
-# Neovim, LSPs, Treesitter, formatters, DAP, etc. all rely on this.
-#
-# If a tool is installed but Neovim can't see it,
-# PATH is the first thing to check.
-if [[ -d /opt/homebrew/bin ]]; then
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-elif [[ -d /usr/local/bin ]]; then
-  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-fi
-
-export PATH="$(brew --prefix rustup)/bin:$HOME/bin:$PATH"
-# -------------------------------------------------------------------
 # Default editor
 # -------------------------------------------------------------------
 # Tells programs which editor to use (git, crontab, etc.)
@@ -95,9 +78,8 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
   XDG_{RUNTIME,PROJECTS}_DIR
 
 # -------------------------------------------------------------------
-# macOS-specific behavior
+# MacOS Terminal.all specific behavior
 # -------------------------------------------------------------------
-# This variable is specific to Apple’s Terminal.app.
 # Disabling shell sessions prevents Terminal from restoring
 # old shell state, which can cause confusing behavior.
 if [[ "$OSTYPE" == darwin* ]]; then
