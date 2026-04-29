@@ -20,7 +20,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- 3. Lazy setup (THIS was the only broken part)
+-- 3. Lazy setup
 require('lazy').setup({
   require('plugins.neo-tree'),
   require('plugins.colortheme'),
@@ -37,6 +37,7 @@ require('lazy').setup({
   require('plugins.misc'),
   require('plugins.nvim-dap'),
   require('plugins.neo-test'),
+  require('plugins.ansi-esc'),
 }, {
   install = { colorscheme = { 'kanagawa-wave' } },
   checker = { enabled = true },
