@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Pytest Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "redirectOutput": true,  // causes the debugger to print all output from the program into the VS Code debug output window
+            "internalConsoleOptions": "openOnSessionStart",  // automatically open debug output panel when run test
+            "purpose": [
+                "debug-test"
+            ],
+            "autoReload": {
+                "enable": false
+            },
+            "program": "python",
+            "args": [
+                "-m", "pytest",
+                "--rootdir",
+                "${workspaceFolder}/tests.integration/tests",
+                "--verbose"
+            ],
+            "justMyCode": false,
+            "stopOnEntry": false,
+        }
+    ]
+}
