@@ -14,6 +14,8 @@ if [[ -d /usr/local/bin ]]; then
 fi
 export PATH="$(brew --prefix)/bin:$HOME/bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 #======================================
 # Antidote plugin manager
 #======================================
