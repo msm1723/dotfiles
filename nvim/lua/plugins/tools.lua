@@ -10,6 +10,7 @@ return {
 				"shfmt",
 				"prettier",
 				"debugpy",
+				"codelldb",
 			},
 		},
 	},
