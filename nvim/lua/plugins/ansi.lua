@@ -1,6 +1,10 @@
 return {
 	{
 		"0xferrous/ansi.nvim",
+		ft = {
+			"log",
+			"ansi",
+		},
 		cmd = {
 			"AnsiEnable",
 			"AnsiDisable",
