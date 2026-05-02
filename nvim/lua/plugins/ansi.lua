@@ -3,6 +3,8 @@ return {
 		"0xferrous/ansi.nvim",
 		ft = {
 			"log",
+			"logs",
+			"ans",
 			"ansi",
 		},
 		cmd = {
@@ -22,6 +24,8 @@ return {
 			auto_enable_stdin = true,
 			filetypes = {
 				"log",
+				"logs",
+				"ans",
 				"ansi",
 			},
 			colors = {

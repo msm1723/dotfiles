@@ -23,6 +23,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = augroup,
 	pattern = {
+		"*.ans",
+		"*.ansi",
 		"*.log",
 		"*.logs",
 	},
