@@ -1100,9 +1100,3 @@ Clear ownership of responsibilities
 No formatter/LSP/debugger mixing
 VS Code mode isolated from standalone Neovim
 ```
-
-The config should stay understandable:
-
-```text
-If a feature breaks, the responsible file should be obvious.
-```

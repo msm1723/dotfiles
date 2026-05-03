@@ -5,7 +5,7 @@ return {
     config = function()
       require('kanagawa').setup({
         compile = false,
-        transparent = false,
+        transparent = true,
         dimInactive = false,
         theme = 'wave',
       })
