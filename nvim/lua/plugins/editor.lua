@@ -2,7 +2,10 @@ return {
   {
     'tpope/vim-sleuth',
   },
-
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
