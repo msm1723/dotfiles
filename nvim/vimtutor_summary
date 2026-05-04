@@ -197,3 +197,100 @@ Lesson 2.1 SUMMARY
      - "_    - Blackhole (discard deleted/yanked text)
      - "=    - Expression register
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Lesson SEARCH SUMMARY
+
+
+
+  1. */# - search word under cursor. g*/g# - search inword under cursor.
+
+  2. :g/ERROR - show all lines in new window
+     :g/GET \/noise/d - delete noise lines
+     :%s/ERROR//gn - count ERROR
+
+  3. Both VIMGREP and RIPGREP help you build a quickfix list.
+
+    3.1 Quickfix
+
+     Quickfix list = searchable results table:
+     file | line | column | matched text
+
+     Quickfix navigation:
+     :vimgrep /ERROR/gj %
+
+     :copen
+     :cnext
+     :cprev
+     :cfirst
+     :clast
+     :cclose
+     :cc - show current quickfix item
+     :cclose - close quickfix
+     :cwindow - open quickfix only if there are results
+
+     Use location list when you want separate search results per split/window:
+     :lvimgrep /ERROR/gj %
+
+     :lopen
+     :lnext
+     :lprev
+     :lclose
+
+    3.2 vimgrep
+
+     vimgrep is Vim/Neovim’s built-in grep.
+     \v - regex-friendly mode
+     \V - literal text mode.
+
+     Examples:
+
+     :vimgrep /ERROR/ %
+
+     :vimgrep /pattern/gj files - `g` collect all matches on a line, not only first. `j` do not jump immediately to first match.
+
+     :vimgrep /\v(ERROR|WARN|Exception|Traceback)/gj % - Search several patterns
+
+     :vimgrep /ERROR/gj *.log - Search multiple files
+
+     :vimgrep /ERROR/gj **/*.log - Search recursively
+
+     :vimgrep /ERROR/gj %
+     :vimgrepadd /WARN/gj % - Add to existing results
+
+     vimgrep is good, but:
+     - It can be slower on huge folders.
+     - It uses Vim regex, not modern regex.
+     - It searches through files using Vim itself.
+     - For massive logs, external tools are better.
+     For one open file, vimgrep is great.
+
+    3.3 repgrep
+
+     The ! in :grep! means: fill quickfix but do not jump immediately.
+
+     :grep! "ERROR|WARN" logs/
+
+     :grep! "request_id=abc-123" logs/
+
+     :grep! "ERROR|WARN|Exception|Traceback" logs/
+
+     :grep! "status(_code)?[=: ]+5[0-9][0-9]" logs/ - Search HTTP 5xx
+
+     :grep! -F "user.id" logs/ - literal text mode
+
+     :grep! -e "connection refused" -e "connection reset" -e "timed out" logs/ - multiple patterns
+
+     :grep! "ERROR" -g "*.log" logs/ - searche with globs
+
+     :grep! "ERROR" -g "*.log" -g "*.txt" logs/
+
+     :grep! "ERROR" -g "*.log" -g "!*.gz" logs/ - exclude gz files
+
+     :grep! "ERROR" -g "!*compose*" logs/ - exciude health files
+
+     :grep! -u "ERROR" logs/ - search ignorring hidden files
+     -u - search ignored files
+     -uu - search ignored + hidden files
+     -uuu - search ignored + hidden + binary files
+

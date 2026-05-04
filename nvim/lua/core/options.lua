@@ -23,6 +23,12 @@ opt.linebreak = true
 
 opt.ignorecase = true
 opt.smartcase = true
+opt.incsearch = true
+opt.hlsearch = true
+
+-- Use ripgrep for :grep
+opt.grepprg = 'rg --vimgrep --smart-case'
+opt.grepformat = '%f:%l:%c:%m'
 
 opt.termguicolors = true
 
