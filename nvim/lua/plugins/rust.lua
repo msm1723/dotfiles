@@ -21,7 +21,7 @@ return {
     end,
     keys = {
       {
-        '<leader>rh',
+        '<localleader>h',
         function()
           vim.cmd.RustLsp({ 'hover', 'actions' })
         end,
@@ -29,7 +29,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>ra',
+        '<localleader>a',
         function()
           vim.cmd.RustLsp('codeAction')
         end,
@@ -37,7 +37,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>rr',
+        '<localleader>r',
         function()
           vim.cmd.RustLsp('runnables')
         end,
@@ -45,7 +45,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>re',
+        '<localleader>e',
         function()
           vim.cmd.RustLsp('explainError')
         end,
@@ -53,7 +53,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>rd',
+        '<localleader>d',
         function()
           vim.cmd.RustLsp('renderDiagnostic')
         end,
@@ -61,7 +61,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>rc',
+        '<localleader>c',
         function()
           vim.cmd.RustLsp('openCargo')
         end,
@@ -69,7 +69,7 @@ return {
         ft = 'rust',
       },
       {
-        '<leader>ro',
+        '<localleader>o',
         function()
           vim.cmd.RustLsp('openDocs')
         end,

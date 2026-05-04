@@ -12,37 +12,41 @@ return {
     },
     keys = {
       {
-        '<leader>tt',
+        '<localleader>t',
         function()
           require('neotest').run.run()
         end,
         desc = 'Run nearest test',
+        ft = 'python',
       },
       {
-        '<leader>td',
+        '<localleader>d',
         function()
           require('neotest').run.run({
             strategy = 'dap',
           })
         end,
         desc = 'Debug nearest test',
+        ft = 'python',
       },
       {
-        '<leader>tf',
+        '<localleader>f',
         function()
           require('neotest').run.run(vim.fn.expand('%'))
         end,
         desc = 'Run current test file',
+        ft = 'python',
       },
       {
-        '<leader>ts',
+        '<localleader>s',
         function()
           require('neotest').summary.toggle()
         end,
         desc = 'Toggle test summary',
+        ft = 'python',
       },
       {
-        '<leader>to',
+        '<localleader>o',
         function()
           require('neotest').output.open({
             enter = true,
@@ -50,27 +54,31 @@ return {
           })
         end,
         desc = 'Open test output',
+        ft = 'python',
       },
       {
-        '<leader>tO',
+        '<localleader>O',
         function()
           require('neotest').output_panel.toggle()
         end,
         desc = 'Toggle test output panel',
+        ft = 'python',
       },
       {
-        '<leader>tw',
+        '<localleader>w',
         function()
           require('neotest').watch.toggle(vim.fn.expand('%'))
         end,
         desc = 'Toggle watch current file',
+        ft = 'python',
       },
       {
-        '<leader>tS',
+        '<localleader>S',
         function()
           require('neotest').run.stop()
         end,
         desc = 'Stop test run',
+        ft = 'python',
       },
     },
     config = function()

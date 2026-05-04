@@ -1,5 +1,20 @@
 local keymap = vim.keymap.set
 
+keymap({ 'n', 'v' }, '<Space>', '<Nop>', {
+  silent = true,
+  desc = 'Disable Space',
+})
+
+keymap('i', 'jk', '<Esc>', {
+  silent = true,
+  desc = 'Exit insert mode',
+})
+
+keymap('n', 'x', '"_x', {
+  silent = true,
+  desc = 'Delete character without yanking',
+})
+
 keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', {
   silent = true,
   desc = 'Clear search highlight',
@@ -7,12 +22,32 @@ keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', {
 
 keymap('n', 'n', 'nzzzv', {
   silent = true,
-  desc = 'Next search result',
+  desc = 'Next search result center',
 })
 
 keymap('n', 'N', 'Nzzzv', {
   silent = true,
-  desc = 'Previous search result',
+  desc = 'Previous search result center',
+})
+
+keymap('n', '<C-d>', '<C-d>zz', {
+  silent = true,
+  desc = 'Scroll half-page down and center',
+})
+
+keymap('n', '<C-u>', '<C-u>zz', {
+  silent = true,
+  desc = 'Scroll half-page up and center',
+})
+
+keymap('n', '<leader>w', '<cmd>write<CR>', {
+  silent = true,
+  desc = 'Save file',
+})
+
+keymap('n', '<leader>z', '<cmd>quit<CR>', {
+  silent = true,
+  desc = 'Quit window',
 })
 
 keymap('n', ']q', '<cmd>cnext<CR>zzzv', {
@@ -37,21 +72,14 @@ keymap('n', '<leader>qc', '<cmd>cclose<CR>', {
 
 keymap('n', '<leader>sw', function()
   local word = vim.fn.expand('<cword>')
-  vim.cmd('silent grep! -F ' .. vim.fn.shellescape(word))
+  if word == '' then
+    return
+  end
+  vim.cmd('silent grep! -F -- ' .. vim.fn.shellescape(word))
   vim.cmd('copen')
 end, {
   silent = true,
   desc = 'Ripgrep word under cursor',
-})
-
-keymap('n', '<leader>w', '<cmd>write<CR>', {
-  silent = true,
-  desc = 'Save file',
-})
-
-keymap('n', '<leader>x', '<cmd>quit<CR>', {
-  silent = true,
-  desc = 'Quit window',
 })
 
 keymap('n', '<leader>h', '<cmd>split<CR>', {
@@ -64,32 +92,42 @@ keymap('n', '<leader>v', '<cmd>vsplit<CR>', {
   desc = 'Vertical split',
 })
 
-keymap('n', '<C-h>', '<C-w>h', {
+keymap('n', '<leader>=', '<C-w>=', {
   silent = true,
-  desc = 'Go to left window',
+  desc = 'Equalize splits',
 })
 
-keymap('n', '<C-j>', '<C-w>j', {
+keymap('n', '<leader>x', '<cmd>close<CR>', {
   silent = true,
-  desc = 'Go to lower window',
+  desc = 'Close current window',
 })
 
-keymap('n', '<C-k>', '<C-w>k', {
+keymap('n', '<C-Left>', '<C-w>5<', {
   silent = true,
-  desc = 'Go to upper window',
+  desc = 'Decrease window width',
 })
 
-keymap('n', '<C-l>', '<C-w>l', {
+keymap('n', '<C-Right>', '<C-w>5>', {
   silent = true,
-  desc = 'Go to right window',
+  desc = 'Increase window width',
 })
 
-keymap('n', '<leader>bn', '<cmd>bnext<CR>', {
+keymap('n', '<C-Up>', '<C-w>3+', {
+  silent = true,
+  desc = 'Increase window height',
+})
+
+keymap('n', '<C-Down>', '<C-w>3-', {
+  silent = true,
+  desc = 'Decrease window height',
+})
+
+keymap('n', ']b', '<cmd>bnext<CR>', {
   silent = true,
   desc = 'Next buffer',
 })
 
-keymap('n', '<leader>bN', '<cmd>bprevious<CR>', {
+keymap('n', '[b', '<cmd>bprevious<CR>', {
   silent = true,
   desc = 'Previous buffer',
 })
@@ -97,6 +135,43 @@ keymap('n', '<leader>bN', '<cmd>bprevious<CR>', {
 keymap('n', '<leader>bd', '<cmd>bdelete<CR>', {
   silent = true,
   desc = 'Delete buffer',
+})
+
+keymap('n', '<leader>bD', '<cmd>bdelete!<CR>', {
+  silent = true,
+  desc = 'Force delete buffer',
+})
+
+keymap('n', '<leader>be', '<cmd>enew<CR>', {
+  silent = true,
+  desc = 'New empty buffer',
+})
+
+keymap('n', '<leader><Tab>o', '<cmd>tabnew<CR>', {
+  silent = true,
+  desc = 'Open new tab',
+})
+
+keymap('n', '<leader><Tab>x', '<cmd>tabclose<CR>', {
+  silent = true,
+  desc = 'Close current tab',
+})
+
+keymap('n', ']t', '<cmd>tabnext<CR>', {
+  silent = true,
+  desc = 'Next tab',
+})
+
+keymap('n', '[t', '<cmd>tabprevious<CR>', {
+  silent = true,
+  desc = 'Previous tab',
+})
+
+keymap('n', '<leader>lw', function()
+  vim.wo.wrap = not vim.wo.wrap
+end, {
+  silent = true,
+  desc = 'Toggle line wrap',
 })
 
 keymap('v', '<', '<gv', {
@@ -107,6 +182,37 @@ keymap('v', '<', '<gv', {
 keymap('v', '>', '>gv', {
   silent = true,
   desc = 'Indent right and keep selection',
+})
+
+keymap('v', 'p', '"_dP', {
+  silent = true,
+  desc = 'Paste without replacing register',
+})
+
+keymap('n', '[d', function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, {
+  silent = true,
+  desc = 'Previous diagnostic',
+})
+
+keymap('n', ']d', function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, {
+  silent = true,
+  desc = 'Next diagnostic',
+})
+
+keymap('n', '<leader>dd', vim.diagnostic.open_float, {
+  silent = true,
+  desc = 'Show diagnostic',
+})
+
+keymap('n', '<leader>dl', function()
+  vim.diagnostic.setloclist({ open = true })
+end, {
+  silent = true,
+  desc = 'Open diagnostics location list',
 })
 
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {

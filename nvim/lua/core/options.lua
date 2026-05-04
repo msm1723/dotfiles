@@ -5,53 +5,91 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 
 local opt = vim.opt
 
-opt.number = true
-opt.relativenumber = true
+-- Encoding
+vim.opt.encoding = 'utf-8' -- Internal Vim encoding
+vim.opt.fileencoding = 'utf-8' -- File encoding for saving/loading
 
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
-opt.smartindent = true
+-- UI
+opt.number = true -- Show line numbers
+opt.relativenumber = true -- Relative line numbers
+opt.numberwidth = 4 -- Width of the number column
+opt.cursorline = true -- Highlight the current line
+opt.signcolumn = 'yes' -- Always show the sign column
+opt.termguicolors = true -- True color support
+opt.cmdheight = 1 -- Height of command line area
+opt.showtabline = 2 -- Always display tab line
+opt.pumheight = 10 -- Popup menu height
+opt.title = true -- Set terminal window title
+opt.ruler = true -- Display cursor position at bottom
+opt.conceallevel = 0 -- Display Markdown backticks clearly
+opt.guifont = 'CaskaydiaCove Nerd Font:h14'
 
-opt.wrap = false
-opt.linebreak = true
+-- Editing Behavior
+opt.wrap = false -- Disable line wrap
+opt.breakindent = true -- Indent wrapped lines for readability
+opt.linebreak = true -- Wrap lines at word boundary
+opt.autoindent = true -- Auto-indent new lines
+opt.smartindent = true -- Smart indentation
+opt.expandtab = true -- Convert tabs to spaces
+opt.shiftwidth = 4 -- Indentation width
+opt.tabstop = 4 -- Tab character width
+opt.softtabstop = 4 -- Spaces per tab during editing
+opt.backspace = 'indent,eol,start' -- Allow backspace in insert mode
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = true
+-- Search
+opt.hlsearch = true -- Highlight search results
+opt.ignorecase = true -- Ignore case in searches
+opt.incsearch = true -- Jumping to matches while typing
+opt.smartcase = true -- Enable smart case search behavior
+opt.inccommand = 'split' -- Live substitution preview
+opt.grepprg = 'rg --vimgrep --smart-case' -- Use ripgrep for :grep
+opt.grepformat = '%f:%l:%c:%m' -- format
 
--- Use ripgrep for :grep
-opt.grepprg = 'rg --vimgrep --smart-case'
-opt.grepformat = '%f:%l:%c:%m'
+-- Clipboard
+opt.clipboard = 'unnamedplus' -- Use system clipboard
 
-opt.termguicolors = true
+-- Mouse
+opt.mouse = 'a' -- Enable mouse in all modes
 
-opt.signcolumn = 'yes'
-opt.cursorline = true
-opt.scrolloff = 8
-opt.sidescrolloff = 8
+-- Splitting
+opt.splitbelow = true -- Split horizontally below
+opt.splitright = true -- Split vertically to the right
+opt.switchbuf = 'useopen' -- Reuse open windows when switching buffers
 
-opt.splitright = true
-opt.splitbelow = true
+-- Performance
+opt.updatetime = 250 -- Faster completion and diagnostics
+opt.timeoutlen = 400 -- Faster mapped sequence completion
 
-opt.undofile = true
-opt.swapfile = false
-opt.backup = false
+-- Scroll Behavior
+opt.scrolloff = 4 -- Lines above/below cursor when scrolling
+opt.sidescrolloff = 8 -- Columns left/right of cursor when side scrolling
+opt.whichwrap = 'bs<>[]hl' -- Allow cursor movement across lines
 
-opt.updatetime = 250
-opt.timeoutlen = 400
+-- Completion
+opt.completeopt = { 'menu', 'menuone', 'noselect' } -- Better completion experience
+opt.shortmess:append('c') -- Reduce completion messages
+opt.iskeyword:append('-') -- Hyphen treated as part of word
 
-opt.clipboard = 'unnamedplus'
+-- Backup & Undo
+opt.swapfile = false -- Disable swap files
+opt.backup = false -- Disable backup files
+opt.writebackup = false -- Disable backup before overwriting files
+opt.undofile = true -- Enable persistent undo history
 
-opt.completeopt = { 'menu', 'menuone', 'noselect' }
-
-opt.list = true
+-- Miscellaneous
+opt.hidden = true -- Allow switching buffers without saving
+opt.bufhidden = 'hide' -- Keep buffers loaded but hidden
+opt.runtimepath:remove('/usr/share/vim/vimfiles') -- Prevent conflicts with Vim plugins
+opt.syntax = 'ON' -- Enable syntax highlighting explicitly
+opt.wildmenu = true -- Enhanced command-line completion
+opt.showcmd = true -- Show partial command in command line
+opt.showmode = true -- Display current mode in status line
+opt.showmatch = true -- Highlight matching brackets
+opt.list = true -- Show invisible characters
 opt.listchars = {
   tab = '» ',
   trail = '·',

@@ -45,3 +45,10 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.expandtab = true
   end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Disable auto-comment continuation',
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+  end,
+})

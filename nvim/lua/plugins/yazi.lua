@@ -8,18 +8,18 @@ return {
     },
     keys = {
       {
-        '<leader>-',
+        '<leader>e',
         '<cmd>Yazi<cr>',
         desc = 'Open Yazi at current file',
         mode = { 'n', 'v' },
       },
       {
-        '<leader>cw',
+        '<leader>E',
         '<cmd>Yazi cwd<cr>',
         desc = 'Open Yazi in working directory',
       },
       {
-        '<C-Up>',
+        '<leader>yr',
         '<cmd>Yazi toggle<cr>',
         desc = 'Resume Yazi session',
       },
