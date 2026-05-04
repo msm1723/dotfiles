@@ -6,9 +6,9 @@
 format = """
 [$directory](bold fg:sumi-ink-3 bg:crystal-blue)\
 [](fg:crystal-blue bg:lotus-red)\
-[$git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-red)\
+[ $git_branch$git_status$rust$python$lua$nodejs](bold fg:lotus-cyan bg:lotus-red)\
 [](fg:lotus-red bg:surimi-orange)\
-[$docker_context$container$hostname$jobs$cmd_duration$status](bold fg:sumi-ink-3 bg:surimi-orange)\
+[ $docker_context$container$hostname$jobs$cmd_duration$status](bold fg:sumi-ink-3 bg:surimi-orange)\
 [](fg:surimi-orange)\
 $line_break\
 [$character](bold fg: lotus-yellow4)"""

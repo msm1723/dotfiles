@@ -22,8 +22,8 @@ suppress_preload = false
 [preview]
 wrap = "no"  # Disable wrapping for better text previews
 tab_size = 2  # Keep tab size small for better formatting
-max_width = 600  # Good limit for the preview window width
-max_height = 900  # Good limit for the preview window height
+max_width = 960  # Good limit for the preview window width
+max_height = 600  # Good limit for the preview window height
 cache_dir = ""  # Disable caching for faster previews
 image_delay = 0  # Slightly increased delay to reduce flickering
 image_filter = "lanczos3"  # Higher quality image scaling
