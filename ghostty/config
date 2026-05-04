@@ -7,16 +7,19 @@
 # examples:
 # https://github.com/search?q=path%3Aghostty%2Fconfig&type=code
 
+shell-integration = zsh
+shell-integration-features = ssh-env
+
 font-size = 14
 font-family = CaskaydiaCove Nerd Font
 font-style = ExtraLight
-font-style-bold = Light 
-font-style-italic = ExtraLight Italic 
-font-style-bold-italic = Light Italic 
+font-style-bold = Light
+font-style-italic = ExtraLight Italic
+font-style-bold-italic = Light Italic
 font-thicken = true
 font-thicken-strength = 0
 
-adjust-cell-height = 0 
+adjust-cell-height = 0
 adjust-strikethrough-position = -1
 adjust-underline-position = 2
 
@@ -43,9 +46,20 @@ mouse-hide-while-typing = true
 
 desktop-notifications = true
 
+scrollbar = system
+scrollback-limit = 100000000
+
+copy-on-select = false
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+right-click-action = copy-or-paste
+
 keybind = global:opt+`=toggle_quick_terminal
 keybind = shift+ctrl+left_bracket=previous_tab
 keybind = shift+ctrl+right_bracket=next_tab
 keybind = shift+ctrl+,=move_tab:-1
 keybind = shift+ctrl+.=move_tab:+1
 
+keybind = cmd+shift+o=toggle_background_opacity
+keybind = cmd+up=jump_to_prompt:-1
+keybind = cmd+down=jump_to_prompt:1
