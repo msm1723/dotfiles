@@ -1,9 +1,9 @@
 # keymap.toml
-"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+#:$schema = "https://yazi-rs.github.io/schemas/keymap.json
 
 [[mgr.prepend_keymap]]
-on   = ["u", "z"]
-run  = """shell --interactive '
+on = ["u", "z"]
+run = """shell --block '
 set -e
 # Use selection if present, otherwise hovered item
 items=("$@")
@@ -34,56 +34,56 @@ zip -r "$zip_name" "${items[@]##*/}"
 desc = "Zip selected items → archiveN.zip"
 
 [[mgr.prepend_keymap]]
-on  = ["g", "b"]
-run = 'shell -- ya emit cd "~/bin"'
+on = ["g", "b"]
+run = "cd ~/bin"
 desc = "Jump to home bin directory"
 
 [[mgr.prepend_keymap]]
-on  = ["g", "l"]
-run = 'shell -- ya emit cd "~/gitlocal"'
+on = ["g", "l"]
+run = "cd ~/gitlocal"
 desc = "Jump to gitlocal directory"
 
 [[mgr.prepend_keymap]]
-on   = "l"
-run  = "plugin smart-enter"
+on = ["g", "r"]
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"'
+desc = "Jump to repository root"
+
+[[mgr.prepend_keymap]]
+on = "l"
+run = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
-on  = "K"
+on = "K"
 run = "plugin parent-arrow -1"
 desc = "Move up in parent directory"
 
 [[mgr.prepend_keymap]]
-on  = "J"
+on = "J"
 run = "plugin parent-arrow 1"
 desc = "Move down in parent directory"
 
 [[mgr.prepend_keymap]]
-on   = "t"
-run  = "plugin smart-tab"
+on = "t"
+run = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
 [[mgr.prepend_keymap]]
-on   = ","
-run  = "plugin toggle-pane min-preview"
+on = ["n", "p"]
+run = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
 [[mgr.prepend_keymap]]
-on   = "."
-run  = "plugin toggle-pane max-preview"
+on = ["n", "P"]
+run = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
 [[mgr.prepend_keymap]]
-on = [ "g", "r" ]
-run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
-desc = "Jump to repository root"
-
-[[mgr.prepend_keymap]]
 on = "<C-p>"
-run = 'shell -- qlmanage -p "$@"'
+run = "shell -- qlmanage -p %s"
 desc = "Open current file in Quick Look"
 
 [[mgr.prepend_keymap]]
-on   = "!"
-run  = 'shell "$SHELL" --block'
+on = "!"
+run = 'shell --block -- "${SHELL:-/bin/sh}"'
 desc = "Open shell here"

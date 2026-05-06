@@ -37,6 +37,10 @@ Status:children_add(function(self)
 	end
 end, 3300, Status.LEFT)
 
+require("git"):setup({
+	order = 1500,
+})
+
 Status:children_add(function()
 	local h = cx.active.current.hovered
 	if h == nil or ya.target_family() ~= "unix" then

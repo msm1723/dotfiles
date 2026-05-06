@@ -1,5 +1,5 @@
 # yazi.toml
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+#:$schema = "https://yazi-rs.github.io/schemas/yazi.json
 
 [mgr]
 ratio = [3, 5, 9]
@@ -20,20 +20,28 @@ image_bound = [0, 0]
 suppress_preload = false
 
 [preview]
-wrap = "no"  # Disable wrapping for better text previews
-tab_size = 2  # Keep tab size small for better formatting
-max_width = 960  # Good limit for the preview window width
-max_height = 600  # Good limit for the preview window height
-cache_dir = ""  # Disable caching for faster previews
-image_delay = 0  # Slightly increased delay to reduce flickering
-image_filter = "lanczos3"  # Higher quality image scaling
-image_quality = 90  # Better image quality
-sixel_fraction = 20  # Better quality SIXEL previews
-ueberzug_scale = 1  # Keep image scale at default
-ueberzug_offset = [0, 0, 0, 0]  # No offset adjustments needed
+wrap = "no"                    # Disable wrapping for better text previews
+tab_size = 2                   # Keep tab size small for better formatting
+max_width = 960                # Good limit for the preview window width
+max_height = 600               # Good limit for the preview window height
+cache_dir = ""                 # Use Yazi/system default cache location
+image_delay = 0                # Show image previews immediately
+image_filter = "triangle"      # Not highest quality but faster
+image_quality = 75             # Better image quality
+ueberzug_scale = 1             # Keep image scale at default
+ueberzug_offset = [0, 0, 0, 0] # No offset adjustments needed
 
 [open]
 prepend_rules = [
-    {name = "*.rnote", use = "open"},
-    {name = "*/", use = ["open", "edit"]},
+    { url = "*.rnote", use = "open" },
+    { url = "*/", use = [
+        "open",
+        "edit",
+    ] },
+]
+
+[plugin]
+prepend_fetchers = [
+    { url = "*", run = "git", group = "git" },
+    { url = "*/", run = "git", group = "git" },
 ]
