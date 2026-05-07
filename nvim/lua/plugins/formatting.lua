@@ -9,17 +9,21 @@ return {
         function()
           require('conform').format({
             async = true,
-            lsp_format = 'fallback',
           })
         end,
-        desc = 'Format file',
+        mode = { 'n', 'v' },
+        desc = 'Format file or selection',
       },
     },
     opts = {
+      default_format_opts = {
+        lsp_format = 'fallback',
+      },
+
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'ruff_format' },
-        rust = { 'rustfmt', lsp_format = 'fallback' },
+        rust = { 'rustfmt' },
 
         sh = { 'shfmt' },
         bash = { 'shfmt' },
@@ -32,7 +36,6 @@ return {
 
       format_on_save = {
         timeout_ms = 1000,
-        lsp_format = 'fallback',
       },
     },
   },
