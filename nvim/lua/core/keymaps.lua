@@ -10,9 +10,14 @@ keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', {
   desc = 'Clear search highlight',
 })
 
-keymap('n', '<leader>s', '<cmd>write<CR>', {
+keymap('n', '<leader>ss', '<cmd>write<cr>', {
   silent = true,
   desc = 'Save file',
+})
+
+keymap('n', '<leader>sS', '<cmd>wall<cr>', {
+  silent = true,
+  desc = 'Save all files',
 })
 
 keymap('i', 'jk', '<Esc>', {

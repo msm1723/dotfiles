@@ -6,7 +6,7 @@ local function vscode_action(name)
   end
 end
 
-keymap('n', '<leader>s', vscode_action('workbench.action.files.save'), { desc = 'Save file' })
+keymap('n', '<leader>ss', vscode_action('workbench.action.files.save'), { desc = 'Save file' })
 keymap('n', '<leader>wq', vscode_action('workbench.action.closeActiveEditor'), { desc = 'Close editor' })
 
 keymap('n', '<leader>ff', vscode_action('workbench.action.quickOpen'), { desc = 'Find file' })

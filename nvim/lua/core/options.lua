@@ -49,6 +49,18 @@ opt.inccommand = 'split' -- Live substitution preview
 opt.grepprg = 'rg --vimgrep --smart-case' -- Use ripgrep for :grep
 opt.grepformat = '%f:%l:%c:%m' -- format
 
+-- Folding
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldcolumn = '1'
+opt.fillchars = {
+  fold = ' ',
+  foldopen = '',
+  foldsep = ' ',
+  foldclose = '',
+}
+
 -- Clipboard
 opt.clipboard = 'unnamedplus' -- Use system clipboard
 
