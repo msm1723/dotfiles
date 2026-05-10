@@ -4,53 +4,124 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
-      -- Files / search
+      -- Find
+      {
+        '<leader><space>',
+        function()
+          Snacks.picker.smart()
+        end,
+        desc = 'Smart Find Files',
+      },
       {
         '<leader>ff',
         function()
           Snacks.picker.files()
         end,
-        desc = 'Find files',
-      },
-      {
-        '<leader>fg',
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = 'Find text',
+        desc = 'Find Files',
       },
       {
         '<leader>fb',
         function()
           Snacks.picker.buffers()
         end,
-        desc = 'Find buffers',
+        desc = 'Buffers',
+      },
+      {
+        '<leader>fp',
+        function()
+          Snacks.picker.projects()
+        end,
+        desc = 'Projects',
       },
       {
         '<leader>fr',
         function()
           Snacks.picker.recent()
         end,
-        desc = 'Recent files',
+        desc = 'Recent',
       },
       {
-        '<leader>fh',
+        '<leader>fc',
+        function()
+          Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+        end,
+        desc = 'Find Config File',
+      },
+
+      -- Grep
+      {
+        '<leader>sg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = 'Find text',
+      },
+      {
+        '<leader>sw',
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = 'Visual selection or word',
+        mode = { 'n', 'x' },
+      },
+
+      -- Search
+      {
+        '<leader>sb',
+        function()
+          Snacks.picker.lines()
+        end,
+        desc = 'Buffer Lines',
+      },
+      {
+        '<leader>sh',
         function()
           Snacks.picker.help()
         end,
         desc = 'Find help',
       },
       {
-        '<leader>fc',
+        '<leader>sk',
         function()
-          Snacks.picker.files({
-            cwd = vim.fn.stdpath('config'),
-          })
+          Snacks.picker.keymaps()
         end,
-        desc = 'Find config files',
+        desc = 'Search keymaps',
       },
-
-      -- Useful LSP/search pickers
+      {
+        '<leader>sc',
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = 'Command History',
+      },
+      {
+        '<leader>sC',
+        function()
+          Snacks.picker.commands()
+        end,
+        desc = 'Commands',
+      },
+      {
+        '<leader>s"',
+        function()
+          Snacks.picker.registers()
+        end,
+        desc = 'Registers',
+      },
+      {
+        '<leader>s/',
+        function()
+          Snacks.picker.search_history()
+        end,
+        desc = 'Search History',
+      },
+      {
+        '<leader>sa',
+        function()
+          Snacks.picker.autocmds()
+        end,
+        desc = 'Autocmds',
+      },
       {
         '<leader>sd',
         function()
@@ -66,18 +137,41 @@ return {
         desc = 'Search buffer diagnostics',
       },
       {
-        '<leader>sk',
+        '<leader>sq',
         function()
-          Snacks.picker.keymaps()
+          Snacks.picker.qflist()
         end,
-        desc = 'Search keymaps',
+        desc = 'Quickfix List',
       },
       {
-        '<leader>sc',
+        '<leader>sl',
         function()
-          Snacks.picker.commands()
+          Snacks.picker.loclist()
         end,
-        desc = 'Search commands',
+        desc = 'Location List',
+      },
+      {
+        '<leader>sm',
+        function()
+          Snacks.picker.marks()
+        end,
+        desc = 'Marks',
+      },
+
+      -- LSP
+      {
+        '<leader>ss',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'LSP Symbols',
+      },
+      {
+        '<leader>sS',
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = 'LSP Workspace Symbols',
       },
     },
     ---@type snacks.Config

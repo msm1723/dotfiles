@@ -6,11 +6,11 @@ local function vscode_action(name)
   end
 end
 
-keymap('n', '<leader>ss', vscode_action('workbench.action.files.save'), { desc = 'Save file' })
+keymap('n', '<leader>ww', vscode_action('workbench.action.files.save'), { desc = 'Save file' })
 keymap('n', '<leader>wq', vscode_action('workbench.action.closeActiveEditor'), { desc = 'Close editor' })
 
-keymap('n', '<leader>ff', vscode_action('workbench.action.quickOpen'), { desc = 'Find file' })
-keymap('n', '<leader>fg', vscode_action('workbench.action.findInFiles'), { desc = 'Find in files' })
+keymap('n', '<leader>sf', vscode_action('workbench.action.quickOpen'), { desc = 'Find file' })
+keymap('n', '<leader>sg', vscode_action('workbench.action.findInFiles'), { desc = 'Find in files' })
 
 keymap('n', '<leader>e', vscode_action('workbench.view.explorer'), { desc = 'Explorer' })
 keymap('n', '<leader>p', vscode_action('workbench.action.showCommands'), { desc = 'Command palette' })

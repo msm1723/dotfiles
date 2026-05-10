@@ -10,12 +10,12 @@ keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', {
   desc = 'Clear search highlight',
 })
 
-keymap('n', '<leader>ss', '<cmd>write<cr>', {
+keymap('n', '<leader>ww', '<cmd>write<cr>', {
   silent = true,
   desc = 'Save file',
 })
 
-keymap('n', '<leader>sS', '<cmd>wall<cr>', {
+keymap('n', '<leader>wW', '<cmd>wall<cr>', {
   silent = true,
   desc = 'Save all files',
 })
@@ -122,18 +122,6 @@ keymap('n', ']l', '<cmd>lnext<CR>zzzv', {
 keymap('n', '[l', '<cmd>lprev<CR>zzzv', {
   silent = true,
   desc = 'Previous location item',
-})
-
-keymap('n', '<leader>fw', function()
-  local word = vim.fn.expand('<cword>')
-  if word == '' then
-    return
-  end
-  vim.cmd('silent grep! -F -- ' .. vim.fn.shellescape(word))
-  vim.cmd('copen')
-end, {
-  silent = true,
-  desc = 'Ripgrep word under cursor',
 })
 
 keymap('n', '<leader>h', '<cmd>split<CR>', {

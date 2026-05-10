@@ -35,9 +35,9 @@ opt.linebreak = true -- Wrap lines at word boundary
 opt.autoindent = true -- Auto-indent new lines
 opt.smartindent = true -- Smart indentation
 opt.expandtab = true -- Convert tabs to spaces
-opt.shiftwidth = 4 -- Indentation width
-opt.tabstop = 4 -- Tab character width
-opt.softtabstop = 4 -- Spaces per tab during editing
+opt.shiftwidth = 2 -- Indentation width
+opt.tabstop = 2 -- Tab character width
+opt.softtabstop = 2 -- Spaces per tab during editing
 opt.backspace = 'indent,eol,start' -- Allow backspace in insert mode
 
 -- Search
@@ -94,12 +94,10 @@ opt.undofile = true -- Enable persistent undo history
 
 -- Miscellaneous
 opt.hidden = true -- Allow switching buffers without saving
-opt.bufhidden = 'hide' -- Keep buffers loaded but hidden
 opt.runtimepath:remove('/usr/share/vim/vimfiles') -- Prevent conflicts with Vim plugins
-opt.syntax = 'ON' -- Enable syntax highlighting explicitly
 opt.wildmenu = true -- Enhanced command-line completion
 opt.showcmd = true -- Show partial command in command line
-opt.showmode = true -- Display current mode in status line
+opt.showmode = false -- Display current mode in status line done by lualine
 opt.showmatch = true -- Highlight matching brackets
 opt.list = true -- Show invisible characters
 opt.listchars = {
