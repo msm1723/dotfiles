@@ -10,12 +10,27 @@ keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', {
   desc = 'Clear search highlight',
 })
 
+keymap('n', '<leader>qq', '<cmd>quit<CR>', {
+  silent = true,
+  desc = 'Quit window',
+})
+
+keymap('n', '<leader>qa', '<cmd>quit!<cr>', {
+  silent = true,
+  desc = 'Quit without saving',
+})
+
+keymap('n', '<leader>qw', '<cmd>wq<cr>', {
+  silent = true,
+  desc = 'Save and quit',
+})
+
 keymap('n', '<leader>ww', '<cmd>write<cr>', {
   silent = true,
   desc = 'Save file',
 })
 
-keymap('n', '<leader>wW', '<cmd>wall<cr>', {
+keymap('n', '<leader>wa', '<cmd>wall<cr>', {
   silent = true,
   desc = 'Save all files',
 })
