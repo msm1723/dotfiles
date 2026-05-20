@@ -1,19 +1,6 @@
 #!/bin/zsh
 
 # =========================================================
-# PATH
-# =========================================================
-# On Intel macOS, Homebrew installs binaries into /usr/local/bin.
-# Neovim, LSPs, Treesitter, formatters, DAP, etc. all rely on this.
-if [[ -d /usr/local/bin ]]; then
-  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-fi
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# =========================================================
 # Tmux
 # =========================================================
 # Always work in a tmux session if Tmux is installed
