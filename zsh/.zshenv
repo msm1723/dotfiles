@@ -1,5 +1,5 @@
 #!/bin/zsh
-#
+
 # .zshenv
 #
 # This is the first Zsh startup file.
@@ -12,27 +12,12 @@
 #
 # It’s commonly used to set up environment variables
 # that should be available everywhere.
-#
-# IMPORTANT:
-# Keep this file minimal.
-# Only environment variables and very small helpers.
-#
 
 # =========================================================
 # PATH
 # =========================================================
-if [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
-
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# =========================================================
-# Homebrew
-# =========================================================
-export HOMEBREW_AUTO_UPDATE_SECS=14400
+export PATH="$HOME/bin:$PATH"
 
 # =========================================================
 # Default editor
@@ -45,13 +30,6 @@ export VISUAL="nvim"
 # GPG
 # =========================================================
 export GPG_TTY=$(tty)  # GNUPG encryption ask passphrase in terminal
-
-# =========================================================
-# ZDOTDIR
-# =========================================================
-# Tells Zsh where to look for its own dotfiles
-# (.zshrc, .zprofile, etc.) instead of the default $HOME.
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
 # =========================================================
 # XDG Base Directory Specification
@@ -69,6 +47,11 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+
+# =========================================================
+# ZSH home directory
+# =========================================================
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
 # =========================================================
 # Fish-like dirs
