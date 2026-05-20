@@ -8,7 +8,8 @@
 if [[ -d /usr/local/bin ]]; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 fi
-export PATH="$(brew --prefix)/bin:$HOME/bin:$PATH"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
