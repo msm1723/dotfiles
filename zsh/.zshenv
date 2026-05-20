@@ -18,27 +18,33 @@
 # Only environment variables and very small helpers.
 #
 
-# -------------------------------------------------------------------
+# =========================================================
 # Homebrew
-# -------------------------------------------------------------------
+# =========================================================
 export HOMEBREW_AUTO_UPDATE_SECS=14400
 
-# -------------------------------------------------------------------
+# =========================================================
 # Default editor
-# -------------------------------------------------------------------
+# =========================================================
 # Tells programs which editor to use (git, crontab, etc.)
 export EDITOR="nvim"
+export VISUAL="nvim"
 
-# -------------------------------------------------------------------
+# =========================================================
+# GPG
+# =========================================================
+export GPG_TTY=$(tty)  # GNUPG encryption ask passphrase in terminal
+
+# =========================================================
 # ZDOTDIR
-# -------------------------------------------------------------------
+# =========================================================
 # Tells Zsh where to look for its own dotfiles
 # (.zshrc, .zprofile, etc.) instead of the default $HOME.
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
-# -------------------------------------------------------------------
+# =========================================================
 # XDG Base Directory Specification
-# -------------------------------------------------------------------
+# =========================================================
 # XDG defines standard locations for:
 #   - config
 #   - cache
@@ -53,9 +59,9 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
-# -------------------------------------------------------------------
+# =========================================================
 # Fish-like dirs
-# -------------------------------------------------------------------
+# =========================================================
 # Zsh-specific directories aligned with XDG.
 #
 # These use defensive parameter expansion so they still work if:
@@ -68,9 +74,9 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 : ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
 : ${__zsh_cache_dir:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
 
-# -------------------------------------------------------------------
+# =========================================================
 # Ensure Zsh and XDG directories exist
-# -------------------------------------------------------------------
+# =========================================================
 # Create directories on startup if they don’t exist.
 # Safe to run every time.
 () {
@@ -82,12 +88,13 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
   XDG_{CONFIG,CACHE,DATA,STATE}_HOME \
   XDG_{RUNTIME,PROJECTS}_DIR
 
-# -------------------------------------------------------------------
+# =========================================================
 # MacOS Terminal.all specific behavior
-# -------------------------------------------------------------------
+# =========================================================
 # Disabling shell sessions prevents Terminal from restoring
 # old shell state, which can cause confusing behavior.
 if [[ "$OSTYPE" == darwin* ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi
 
+. "$HOME/.cargo/env"

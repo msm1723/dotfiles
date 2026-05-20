@@ -1,12 +1,8 @@
 #!/bin/zsh
 
-# .zshrc - Run on interactive Zsh session
-
-# -------------------------------------------------------------------
+# =========================================================
 # PATH
-# -------------------------------------------------------------------
-# Add system-wide executable paths.
-#
+# =========================================================
 # On Intel macOS, Homebrew installs binaries into /usr/local/bin.
 # Neovim, LSPs, Treesitter, formatters, DAP, etc. all rely on this.
 if [[ -d /usr/local/bin ]]; then
@@ -16,77 +12,105 @@ export PATH="$(brew --prefix)/bin:$HOME/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-#======================================
-# Antidote plugin manager
-#======================================
-# Clone Antidote if necessary
-[[ -e ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
-
-# FAST Antidote
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
-antidote load
-
-# ULTRAFAST
-# Clone Antidote if necessary
-#[[ -e ${ZDOTDIR:-$HOME}/.antidote ]] ||
-#  git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
-
-# Set the root name of the plugins files (.txt and .zsh) antidote will use.
-#zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
-
-# Ensure the .zsh_plugins.txt file exists so you can add plugins.
-#[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
-
-# Lazy-load antidote from its functions directory.
-#fpath=(${ZDOTDIR:-$HOME}/.antidote/functions $fpath)
-#autoload -Uz antidote
-
-# Generate a new static file whenever .zsh_plugins.txt is updated.
-#if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-#  antidote bundle < ${zsh_plugins}.txt >| ${zsh_plugins}.zsh
-#fi
-
-# Source your static plugins file.
-#source ${zsh_plugins}.zsh
-
-#======================================
-# Starship
-#======================================
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
-
-#======================================
+# =========================================================
 # Tmux
-#======================================
+# =========================================================
 # Always work in a tmux session if Tmux is installed
 if which tmux >/dev/null 2>&1; then
   # Check if the current environment is suitable for tmux
-  if [[ -z "$TMUX" && \
-        $TERM != "screen-256color" && \
-        $TERM != "screen" && \
-        -z "$VSCODE_INJECTION" && \
-        -z "$INSIDE_EMACS" && \
-        -z "$EMACS" && \
-        -z "$VIM" && \
-        -z "$INTELLIJ_ENVIRONMENT_READER" ]]; then
+  if [[ -z "$TMUX" &&
+    $TERM != "screen-256color" &&
+    $TERM != "screen" &&
+    -z "$VSCODE_INJECTION" &&
+    -z "$VIM" ]]; then
     # Try to attach to the default tmux session, or create a new one if it doesn't exist
     tmux attach -t default >/dev/null 2>&1 || tmux new -s default
     exit
   fi
 fi
 
-#======================================
-# Environment
-#======================================
-export GPG_TTY=$(tty)  # GNUPG encryption ask passphrase in terminal
-export PINENTRY_USER_DATA="USE_CURSES=1" # Tell the pinentry program dialog programs to use the nice, full-screen pinentry program
-export HIST_FORMAT="'%Y-%m-%d %T:'$(echo -e '\t')"  # History with time
-export LC_ALL='en_US.UTF-8'  # mc cyrillic issue solved (:
+# =========================================================
+# Starship
+# =========================================================
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
-#======================================
+# =========================================================
+# History
+# =========================================================
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+export HIST_FORMAT="'%Y-%m-%d %T:'$(echo -e '\t')" # History with time
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+# =========================================================
+# Shell behaviour
+# =========================================================
+setopt AUTOCD
+setopt NOBEEP
+setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
+
+# =========================================================
+# Eza Style
+# =========================================================
+zstyle ':omz:plugins:eza' 'dirs-first' yes
+zstyle ':omz:plugins:eza' 'git-status' yes
+zstyle ':omz:plugins:eza' 'header' yes
+zstyle ':omz:plugins:eza' 'icons' yes
+
+# =========================================================
+# Smart directory navigation
+# =========================================================
+eval "$(zoxide init zsh)"
+
+# =========================================================
+# fzf
+# =========================================================
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix' # strip-cwd-prefix removes the leading ./ from results
+
+# Ctrl-T uses fd
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# UI
+export FZF_DEFAULT_OPTS='
+  --height=60%
+  --layout=reverse
+  --border=rounded
+  --prompt="  "
+  --pointer="  "
+  --preview-window=right:65%:wrap:border-left
+'
+
+export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
+export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
+
+# =========================================================
+# Antidote plugin manager
+# =========================================================
+# Clone Antidote if necessary
+[[ -e ${ZDOTDIR:-~}/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
+# Load Antidote
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+antidote load
+
+# =========================================================
+# Environment
+# =========================================================
+export PINENTRY_USER_DATA="USE_CURSES=1" # Tell the pinentry program dialog programs to use the nice, full-screen pinentry program
+export LC_ALL='en_US.UTF-8'              # mc cyrillic issue solved (:
+
+# =========================================================
 # Aliases
-#======================================
+# =========================================================
 # Reload zshell rcconfiguration
 alias reload=". ${ZDOTDIR:-~}/.zshrc"
 
@@ -120,7 +144,7 @@ alias rsynk="rsync -avzhP"
 alias drmi="docker image prune"
 alias drm="docker ps -aq | xargs docker stop | xargs docker rm && docker network prune -f && docker volume prune -f && docker image prune -f"
 dockershell() {
-  if [ "$#" -lt 1 ]; then
+  if [ "$" -lt 1 ]; then
     echo "Usage: dshell <container-id> [shell=sh]"
     return 1
   fi
@@ -142,9 +166,9 @@ alias history="fc -t "$HIST_FORMAT" -il 1"
 alias j='z'
 alias jj='zi'
 
-#======================================
+# =========================================================
 # Yazi
-#======================================
+# =========================================================
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   yazi "$@" --cwd-file="$tmp"
@@ -153,4 +177,3 @@ function y() {
   fi
   rm -f -- "$tmp"
 }
-
