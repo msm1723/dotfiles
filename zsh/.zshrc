@@ -163,6 +163,9 @@ alias history="fc -t "$HIST_FORMAT" -il 1"
 alias j='z'
 alias jj='zi'
 
+# Total Update
+alias uu="bugbc && omz update && antidote update && ya pkg upgrade && nvim --headless \"+Lazy! sync\" +qa && ~/.config/tmux/plugins/tpm/bin/update_plugins all"
+
 # =========================================================
 # Yazi
 # =========================================================
