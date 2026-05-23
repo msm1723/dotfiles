@@ -22,8 +22,8 @@ suppress_preload = false
 [preview]
 wrap = "no"                    # Disable wrapping for better text previews
 tab_size = 2                   # Keep tab size small for better formatting
-max_width = 960                # Good limit for the preview window width
-max_height = 600               # Good limit for the preview window height
+max_width = 1980                # Good limit for the preview window width
+max_height = 1200               # Good limit for the preview window height
 cache_dir = ""                 # Use Yazi/system default cache location
 image_delay = 0                # Show image previews immediately
 image_filter = "triangle"      # Not highest quality but faster
