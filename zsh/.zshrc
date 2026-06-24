@@ -10,6 +10,11 @@ elif [[ -x /usr/local/bin/brew ]]; then
 fi
 
 # =========================================================
+# GPG
+# =========================================================
+[[ -n "$TTY" ]] && export GPG_TTY="$TTY"
+
+# =========================================================
 # Tmux
 # =========================================================
 # Always work in a tmux session if Tmux is installed
@@ -29,24 +34,30 @@ fi
 # =========================================================
 # Starship
 # =========================================================
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 # =========================================================
 # History
 # =========================================================
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=100000
-SAVEHIST=100000
+mkdir -p -- "${HISTFILE:h}"
+touch -- "$HISTFILE"
 
-export HIST_FORMAT="'%Y-%m-%d %T:'$(echo -e '\t')" # History with time
+HISTSIZE=1000000
+SAVEHIST=1000000
 
-setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
+setopt APPEND_HISTORY
+
 setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+unsetopt INC_APPEND_HISTORY
+unsetopt INC_APPEND_HISTORY_TIME
 
 # =========================================================
 # Shell behaviour
@@ -96,8 +107,8 @@ export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 [[ -e ${ZDOTDIR:-~}/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 # Load Antidote
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
-antidote load
+source "${ZDOTDIR:-$HOME}/.antidote/antidote.zsh"
+antidote load "$ZDOTDIR/.zsh_plugins.txt"
 
 # =========================================================
 # Environment
@@ -141,23 +152,29 @@ alias rsynk="rsync -avzhP"
 alias drmi="docker image prune"
 alias drm="docker ps -aq | xargs docker stop | xargs docker rm && docker network prune -f && docker volume prune -f && docker image prune -f"
 dockershell() {
-  if [ "$" -lt 1 ]; then
-    echo "Usage: dshell <container-id> [shell=sh]"
+  if (($# < 1)); then
+    echo 'Usage: dsh <container-id> [sh]'
     return 1
   fi
-  # Default shell
-  SHELL_TYPE="/bin/bash"
-  # If the second argument is provided and it is 'shell=sh', use '/bin/sh'
-  if [ "$2" = "sh" ]; then
-    SHELL_TYPE="/bin/sh"
+
+  local shell_type='/bin/bash'
+
+  if [[ "$2" == 'sh' ]]; then
+    shell_type='/bin/sh'
   fi
-  docker exec -it $1 $SHELL_TYPE
+
+  docker exec -it "$1" "$shell_type"
 }
 alias dsh='dockershell'
 
+# Dated history
+unalias history 2>/dev/null
+function history {
+  fc -t '%Y-%m-%d %T:' -il 1
+}
+
 # Disable mc use of the concurrent shel (fast load)
 alias mc='mc --nosubshell'
-alias history="fc -t "$HIST_FORMAT" -il 1"
 
 # Zoxide
 alias j='z'

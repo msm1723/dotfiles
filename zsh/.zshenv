@@ -27,11 +27,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # =========================================================
-# GPG
-# =========================================================
-export GPG_TTY=$(tty)  # GNUPG encryption ask passphrase in terminal
-
-# =========================================================
 # XDG Base Directory Specification
 # =========================================================
 # XDG defines standard locations for:
@@ -52,6 +47,8 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 # ZSH home directory
 # =========================================================
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+export ZSH_STATE_DIR="$XDG_STATE_HOME/zsh"
+export HISTFILE="$ZSH_STATE_DIR/history"
 
 # =========================================================
 # Fish-like dirs
@@ -91,4 +88,4 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi
 
-. "$HOME/.cargo/env"
+[[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
