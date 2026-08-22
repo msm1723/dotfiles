@@ -5,30 +5,37 @@
 on = ["u", "z"]
 run = """shell --block '
 set -e
+
 # Use selection if present, otherwise hovered item
-items=("$@")
+items=(%s)
 if [ ${#items[@]} -eq 0 ]; then
-  items=("$0")
+  items=(%h)
 fi
+
 # Collect parent directories
 parents=()
 for i in "${items[@]}"; do
   parents+=("$(dirname "$i")")
 done
+
 # Ensure all items are from the same directory
 unique_parents=$(printf "%s\n" "${parents[@]}" | sort -u | wc -l)
 if [ "$unique_parents" -ne 1 ]; then
   echo "Error: all selected items must be in the same directory"
   exit 1
 fi
+
 cd "${parents[0]}"
+
 # Find first available archiveN.zip
 n=1
 while [ -e "archive$n.zip" ]; do
   n=$((n + 1))
 done
+
 zip_name="archive$n.zip"
-# Zip only basenames (no absolute paths)
+
+# Zip only basenames, no absolute paths
 zip -r "$zip_name" "${items[@]##*/}"
 '"""
 desc = "Zip selected items → archiveN.zip"
